@@ -6,29 +6,41 @@
   <title>DEVIANCE — Свобода быть собой</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
+      /* Resend-inspired palette */
       --color-canvas: #1a1c1c;
-      --color-text: #f9f4eb;
       --color-black: #000000;
-      --color-dark-rule: rgba(249, 244, 235, 0.2);
-      --color-light-rule: rgba(1, 1, 1, 0.1);
-      --color-ink: #010101;
+      --color-ink: #f0f0f0;
+      --color-muted: #a1a4a5;
+      --color-link: #abafb4;
+      --color-silver: #ecedef;
+      --color-edge-subtle: rgba(217,237,254,0.145);
+      --color-edge: rgba(214,235,253,0.19);
+      --color-gradient-top: #111111;
       --color-cream: #f9f4eb;
+      --color-light-rule: rgba(1, 1, 1, 0.1);
       --color-light-faint: rgba(1, 1, 1, 0.05);
       
-      --font-display: 'Inter', 'Helvetica', 'Arial', sans-serif;
-      --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+      /* Resend typography */
+      --font-serif: 'Instrument Serif', Georgia, serif;
+      --font-display: 'Inter', ui-sans-serif, system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
       
       --spacing-xs: 8px;
       --spacing-sm: 16px;
       --spacing-md: 24px;
-      --spacing-lg: 40px;
-      --spacing-xl: 80px;
-      --spacing-xxl: 160px;
+      --spacing-lg: 32px;
+      --spacing-xl: 48px;
+      --spacing-xxl: 64px;
+      --spacing-xxxl: 96px;
+      --spacing-xxxxl: 128px;
+      --spacing-footer: 144px;
       
       --radius: 4px;
+      --radius-action: 16px;
+      --radius-demo: 24px;
     }
 
     * {
@@ -43,22 +55,97 @@
 
     body {
       background-color: var(--color-canvas);
-      color: var(--color-text);
+      color: var(--color-ink);
       font-family: var(--font-display);
       font-weight: 400;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
+      font-size: 18px;
+      line-height: 1.5;
       -webkit-font-smoothing: antialiased;
     }
 
-    h1, h2, h3, .display-text {
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: -0.02em;
-      line-height: 0.8;
+    /* Resend typography recipes */
+    .display {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: clamp(64px, 8vw, 96px);
+      line-height: 1;
+      letter-spacing: -0.01em;
     }
 
-    .mono-label {
+    .display-secondary {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: clamp(48px, 6vw, 76.8px);
+      line-height: 1;
+      letter-spacing: -0.01em;
+    }
+
+    .heading {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(40px, 5vw, 56px);
+      line-height: 1.2;
+      letter-spacing: -0.05em;
+    }
+
+    .heading-compact {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 36px;
+      line-height: 1.3;
+      letter-spacing: -0.05em;
+    }
+
+    .body-text {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .body-small {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .action-text {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .action-small {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    .navigation-text {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    .link-text {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    .caption {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 16px;
+    }
+
+    .label {
       font-family: var(--font-mono);
       font-weight: 500;
       font-size: 10px;
@@ -67,37 +154,45 @@
       letter-spacing: -0.02em;
     }
 
-    /* Header */
+    .silver-text {
+      background-image: linear-gradient(to right bottom, #ffffff 30%, rgba(255,255,255,0.5));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Header - Resend style navigation */
     .header {
       position: fixed;
       top: 16px;
       left: 50%;
       transform: translateX(-50%);
       width: calc(100% - 32px);
-      max-width: 1400px;
-      height: 50px;
+      max-width: 1280px;
+      height: 58px;
       background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(4px);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
       border-radius: var(--radius);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 16px;
+      padding: 0 var(--spacing-md);
       z-index: 100;
-      border: 1px solid var(--color-dark-rule);
+      border: 1px solid var(--color-edge-subtle);
     }
 
     .header-left, .header-right {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: var(--spacing-sm);
     }
 
     .header-center {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      height: 28px;
+      height: 32px;
     }
 
     .header-center img {
@@ -110,18 +205,18 @@
     .icon-btn {
       background: transparent;
       border: none;
-      color: var(--color-text);
+      color: var(--color-silver);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 8px;
+      padding: var(--spacing-xs);
       border-radius: var(--radius);
-      transition: opacity 0.2s;
+      transition: all 0.15s cubic-bezier(.4, 0, .2, 1);
     }
 
     .icon-btn:hover {
-      opacity: 0.7;
+      color: var(--color-ink);
     }
 
     .icon-btn svg {
@@ -148,8 +243,8 @@
       display: block;
       width: 20px;
       height: 1.5px;
-      background: var(--color-text);
-      transition: all 0.3s ease;
+      background: var(--color-silver);
+      transition: all 0.3s cubic-bezier(.4, 0, .2, 1);
     }
 
     .hamburger.active span:nth-child(1) {
@@ -178,7 +273,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 32px;
+      gap: var(--spacing-xl);
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.3s ease;
@@ -190,20 +285,20 @@
     }
 
     .mobile-menu a, .mobile-menu button {
-      color: var(--color-text);
+      color: var(--color-ink);
       text-decoration: none;
       font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 28px;
-      text-transform: uppercase;
-      letter-spacing: -0.02em;
+      font-weight: 400;
+      font-size: 48px;
+      line-height: 1.2;
+      letter-spacing: -0.05em;
       background: none;
       border: none;
       cursor: pointer;
       transition: opacity 0.2s;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: var(--spacing-md);
     }
 
     .mobile-menu a:hover, .mobile-menu button:hover {
@@ -211,7 +306,7 @@
     }
 
     .mobile-menu .tg-link {
-      font-size: 18px;
+      font-size: 24px;
       opacity: 0.7;
     }
 
@@ -239,27 +334,55 @@
       z-index: 0;
     }
 
-    .hero-logo {
+    .hero-content {
       position: relative;
       z-index: 1;
-      width: 240px;
-      max-width: 60vw;
-      opacity: 0.95;
-      filter: brightness(0) invert(1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-xl);
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 48px;
+      padding: 0 20px;
+      border-radius: var(--radius-action);
+      border: 2px solid rgba(255,255,255,0.05);
+      background-image: linear-gradient(104deg, rgba(253,253,253,0.05) 5%, rgba(240,240,228,0.1) 100%);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      color: var(--color-ink);
+      text-decoration: none;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 1.5;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(.4, 0, .2, 1);
+      box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.1), 0px 1px 2px -1px rgba(0,0,0,0.1);
+    }
+
+    .hero-cta:hover {
+      background-color: color-mix(in oklab, #fff 90%, transparent);
+      color: #000;
     }
 
     /* Collection - Light Theme */
     .collection {
-      padding: var(--spacing-xxl) var(--spacing-lg);
-      max-width: 1440px;
+      padding: var(--spacing-xxxl) var(--spacing-md);
+      max-width: 1280px;
       margin: 0 auto;
       background: var(--color-cream);
-      color: var(--color-ink);
+      color: #010101;
     }
 
     .collection .section-label {
-      color: var(--color-ink);
+      color: #010101;
       opacity: 0.7;
+      margin-bottom: var(--spacing-md);
     }
 
     .product-grid {
@@ -302,7 +425,7 @@
       top: 50%;
       transform: translateY(-50%);
       background: rgba(255,255,255,0.9);
-      color: var(--color-ink);
+      color: #010101;
       border: 1px solid var(--color-light-rule);
       width: 34px;
       height: 34px;
@@ -317,7 +440,7 @@
     }
 
     .slider-btn:hover {
-      background: var(--color-ink);
+      background: #010101;
       color: var(--color-cream);
     }
 
@@ -325,25 +448,24 @@
     .slider-btn.next { right: 8px; }
 
     .product-name {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: -0.02em;
+      font-family: var(--font-display);
+      font-size: 14px;
+      line-height: 1.6;
       padding: 0 4px;
-      color: var(--color-ink);
+      color: #010101;
     }
 
     /* About - Light Theme */
     .about {
-      padding: var(--spacing-xxl) var(--spacing-lg);
-      max-width: 1440px;
+      padding: var(--spacing-xxxl) var(--spacing-md);
+      max-width: 1280px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1.2fr 1fr;
       gap: var(--spacing-lg);
       align-items: center;
       background: var(--color-cream);
-      color: var(--color-ink);
+      color: #010101;
     }
 
     .about-images {
@@ -369,14 +491,6 @@
     }
 
     .about-img:nth-child(2) {
-      width: 38%;
-      height: 45%;
-      top: 5%;
-      left: 42%;
-      z-index: 2;
-    }
-
-    .about-img:nth-child(3) {
       width: 40%;
       height: 50%;
       bottom: 5%;
@@ -384,7 +498,7 @@
       z-index: 3;
     }
 
-    .about-img:nth-child(4) {
+    .about-img:nth-child(3) {
       width: 25%;
       height: 30%;
       bottom: 15%;
@@ -393,30 +507,40 @@
     }
 
     .about-text h2 {
-      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(40px, 5vw, 56px);
+      line-height: 1.2;
+      letter-spacing: -0.05em;
       margin-bottom: var(--spacing-md);
-      color: var(--color-ink);
+      color: #010101;
     }
 
     .about-text p {
-      font-size: clamp(1.1rem, 2vw, 1.35rem);
-      line-height: 1.4;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 1.2;
       opacity: 0.9;
       max-width: 520px;
-      color: var(--color-ink);
+      color: #010101;
     }
 
     /* Contacts */
     .contacts {
-      padding: var(--spacing-xxl) var(--spacing-lg);
-      max-width: 1440px;
+      padding: var(--spacing-xxxl) var(--spacing-md);
+      max-width: 1280px;
       margin: 0 auto;
       text-align: center;
     }
 
     .contacts h2 {
-      font-size: clamp(2.5rem, 6vw, 5rem);
-      margin-bottom: var(--spacing-lg);
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(40px, 6vw, 56px);
+      line-height: 1.2;
+      letter-spacing: -0.05em;
+      margin-bottom: var(--spacing-xl);
     }
 
     .contact-links {
@@ -427,32 +551,43 @@
     }
 
     .contact-link {
-      color: var(--color-text);
+      color: var(--color-link);
       text-decoration: none;
-      font-size: clamp(1.1rem, 2vw, 1.5rem);
-      border-bottom: 1px solid var(--color-dark-rule);
+      font-family: var(--font-display);
+      font-size: 18px;
+      line-height: 1.5;
+      border-bottom: 1px solid var(--color-edge-subtle);
       padding-bottom: 4px;
-      transition: opacity 0.2s;
+      transition: color 0.15s cubic-bezier(.4, 0, .2, 1);
     }
 
     .contact-link:hover {
-      opacity: 0.7;
+      color: var(--color-ink);
     }
 
     /* Footer */
     .footer {
-      border-top: 1px solid var(--color-dark-rule);
-      padding: var(--spacing-lg);
+      border-top: 1px solid var(--color-edge-subtle);
+      padding: var(--spacing-footer) var(--spacing-md);
       text-align: center;
     }
 
     .footer-content {
-      max-width: 1440px;
+      max-width: 1280px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: var(--spacing-md);
+      gap: var(--spacing-lg);
       align-items: center;
+    }
+
+    .footer-brand {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: 32px;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      color: var(--color-ink);
     }
 
     .footer-links {
@@ -464,24 +599,25 @@
 
     .footer-btn {
       background: transparent;
-      border: 1px solid var(--color-dark-rule);
-      color: var(--color-text);
-      height: 50px;
-      padding: 0 24px;
-      border-radius: var(--radius);
-      font-family: var(--font-mono);
-      font-size: 10px;
-      text-transform: uppercase;
+      border: 1px solid var(--color-edge-subtle);
+      color: var(--color-link);
+      height: 48px;
+      padding: 0 20px;
+      border-radius: var(--radius-action);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 1.5;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.2s cubic-bezier(.4, 0, .2, 1);
       display: inline-flex;
       align-items: center;
       justify-content: center;
     }
 
     .footer-btn:hover {
-      background: var(--color-text);
-      color: var(--color-canvas);
+      background-color: color-mix(in oklab, #fff 90%, transparent);
+      color: #000;
     }
 
     /* Modals / Pages */
@@ -495,7 +631,7 @@
       z-index: 200;
       overflow-y: auto;
       display: none;
-      padding: var(--spacing-lg);
+      padding: var(--spacing-md);
     }
 
     .modal-page.active {
@@ -505,60 +641,75 @@
     .back-btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: var(--spacing-xs);
       background: transparent;
-      border: 1px solid var(--color-dark-rule);
-      color: var(--color-text);
-      height: 50px;
-      padding: 0 24px;
-      border-radius: var(--radius);
-      font-family: var(--font-mono);
-      font-size: 10px;
-      text-transform: uppercase;
+      border: 1px solid var(--color-edge-subtle);
+      color: var(--color-silver);
+      height: 48px;
+      padding: 0 20px;
+      border-radius: var(--radius-action);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 1.5;
       cursor: pointer;
       margin-bottom: var(--spacing-lg);
-      transition: all 0.2s;
+      transition: all 0.2s cubic-bezier(.4, 0, .2, 1);
     }
 
     .back-btn:hover {
-      background: var(--color-text);
-      color: var(--color-canvas);
+      background-color: color-mix(in oklab, #fff 90%, transparent);
+      color: #000;
     }
 
     .legal-text {
-      max-width: 800px;
+      max-width: 1024px;
       margin: 0 auto;
+      font-family: var(--font-display);
+      font-weight: 400;
       font-size: 14px;
       line-height: 1.6;
-      color: rgba(249, 244, 235, 0.85);
-      padding-bottom: var(--spacing-xxl);
+      color: var(--color-muted);
+      padding-bottom: var(--spacing-xxxxl);
     }
 
     .legal-text h3 {
-      font-size: 16px;
-      margin-top: 32px;
-      margin-bottom: 12px;
-      color: var(--color-text);
-      text-transform: uppercase;
-      letter-spacing: -0.02em;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 36px;
+      line-height: 1.3;
+      letter-spacing: -0.05em;
+      margin-top: var(--spacing-xxl);
+      margin-bottom: var(--spacing-md);
+      color: var(--color-ink);
+    }
+
+    .legal-text h2 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 36px;
+      line-height: 1.3;
+      letter-spacing: -0.05em;
+      margin-bottom: var(--spacing-lg);
+      color: var(--color-ink);
     }
 
     .legal-text p {
-      margin-bottom: 16px;
+      margin-bottom: var(--spacing-sm);
     }
 
     .legal-text strong {
-      color: var(--color-text);
+      color: var(--color-ink);
     }
 
     /* Product Detail Modal */
     .product-detail {
-      max-width: 1000px;
+      max-width: 1024px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--spacing-lg);
-      padding-bottom: var(--spacing-xxl);
+      padding-bottom: var(--spacing-xxxxl);
     }
 
     .product-detail-images {
@@ -570,16 +721,21 @@
       width: 100%;
       aspect-ratio: 3/4;
       object-fit: cover;
-      border-radius: var(--radius);
+      border-radius: var(--radius-demo);
       margin-bottom: var(--spacing-xs);
-      border: 1px solid var(--color-light-rule);
+      border: 1px solid var(--color-edge);
+      border-bottom-width: 0px;
       background: #e0dcd4;
     }
 
     .product-detail-info h2 {
-      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: clamp(32px, 3vw, 36px);
+      line-height: 1.3;
+      letter-spacing: -0.05em;
       margin-bottom: var(--spacing-sm);
-      color: var(--color-ink);
+      color: #010101;
     }
 
     .detail-section {
@@ -591,24 +747,27 @@
     .detail-section h4 {
       font-family: var(--font-mono);
       font-size: 10px;
+      line-height: 18px;
       text-transform: uppercase;
-      margin-bottom: 8px;
-      opacity: 0.7;
       letter-spacing: -0.02em;
-      color: var(--color-ink);
+      margin-bottom: var(--spacing-xs);
+      opacity: 0.7;
+      color: #010101;
     }
 
     .detail-section p {
+      font-family: var(--font-display);
+      font-weight: 400;
       font-size: 16px;
       line-height: 1.4;
       opacity: 0.9;
-      color: var(--color-ink);
+      color: #010101;
     }
 
     .size-selector, .color-selector {
       display: flex;
-      gap: 8px;
-      margin-top: 8px;
+      gap: var(--spacing-xs);
+      margin-top: var(--spacing-xs);
     }
 
     .size-btn, .color-btn {
@@ -616,11 +775,13 @@
       min-width: 40px;
       border: 1px solid var(--color-light-rule);
       background: transparent;
-      color: var(--color-ink);
+      color: #010101;
       border-radius: var(--radius);
       cursor: pointer;
-      font-family: var(--font-mono);
-      font-size: 11px;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 20px;
       text-transform: uppercase;
       transition: all 0.2s;
       display: flex;
@@ -629,9 +790,9 @@
     }
 
     .size-btn.active, .color-btn.active {
-      background: var(--color-ink);
+      background: #010101;
       color: var(--color-cream);
-      border-color: var(--color-ink);
+      border-color: #010101;
     }
 
     .color-btn {
@@ -641,15 +802,15 @@
 
     .add-to-cart-btn {
       width: 100%;
-      height: 50px;
-      background: var(--color-ink);
+      height: 48px;
+      background: #010101;
       color: var(--color-cream);
       border: none;
-      border-radius: var(--radius);
-      font-family: var(--font-mono);
-      font-size: 11px;
-      text-transform: uppercase;
-      font-weight: 700;
+      border-radius: var(--radius-action);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 1.5;
       cursor: pointer;
       margin-top: var(--spacing-md);
       transition: opacity 0.2s;
@@ -661,11 +822,14 @@
     }
 
     .price-tag {
-      font-family: var(--font-mono);
-      font-size: 14px;
-      margin-bottom: 24px;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 36px;
+      line-height: 1.7;
+      letter-spacing: -0.025em;
+      margin-bottom: var(--spacing-md);
       opacity: 0.9;
-      color: var(--color-ink);
+      color: #010101;
     }
 
     /* Responsive */
@@ -679,18 +843,25 @@
         height: 24px;
       }
       
+      .hero-bg {
+        background-size: contain;
+        background-position: center bottom;
+        background-repeat: no-repeat;
+        background-color: #0a0a0a;
+      }
+      
       .product-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
       }
       
       .product-name {
-        font-size: 9px;
+        font-size: 12px;
       }
       
       .about {
         grid-template-columns: 1fr;
-        padding: var(--spacing-xl) var(--spacing-sm);
+        padding: var(--spacing-xxl) var(--spacing-sm);
       }
       
       .about-images {
@@ -699,9 +870,8 @@
       }
       
       .about-img:nth-child(1) { width: 50%; height: 70%; left: 0; top: 0; }
-      .about-img:nth-child(2) { width: 45%; height: 40%; left: 45%; top: 5%; }
-      .about-img:nth-child(3) { width: 45%; height: 45%; left: 30%; bottom: 5%; }
-      .about-img:nth-child(4) { width: 30%; height: 25%; right: 0; bottom: 20%; }
+      .about-img:nth-child(2) { width: 45%; height: 45%; left: 30%; bottom: 5%; }
+      .about-img:nth-child(3) { width: 30%; height: 25%; right: 0; bottom: 20%; }
       
       .product-detail {
         grid-template-columns: 1fr;
@@ -713,15 +883,15 @@
       }
       
       .collection {
-        padding: var(--spacing-xl) var(--spacing-sm);
+        padding: var(--spacing-xxl) var(--spacing-sm);
       }
       
       .contacts {
-        padding: var(--spacing-xl) var(--spacing-sm);
+        padding: var(--spacing-xxl) var(--spacing-sm);
       }
       
       .mobile-menu a, .mobile-menu button {
-        font-size: 22px;
+        font-size: 36px;
       }
     }
 
@@ -755,7 +925,7 @@
       </button>
     </div>
     <div class="header-center">
-      <img src="https://cdn.phototourl.com/anon/2026-11-25-571a6917-1876-40f2-96dc-2863e64b5cf7.png" alt="Deviance Logo">
+      <img src="https://static.tildacdn.pub/tild6638-3161-4262-b333-666166346262/5422820820716821428_.png" alt="Deviance Logo">
     </div>
     <div class="header-right">
       <button class="icon-btn" onclick="alert('Корзина: ' + cartCount + ' товаров')" aria-label="Корзина">
@@ -782,12 +952,14 @@
   <!-- Hero -->
   <section id="hero" class="hero">
     <div class="hero-bg"></div>
-    <img src="https://static.tildacdn.pub/tild6638-3161-4262-b333-666166346262/5422820820716821428_.png" alt="Deviance" class="hero-logo">
+    <div class="hero-content">
+      <button class="hero-cta" onclick="scrollToSection('collection')">Перейти к каталогу</button>
+    </div>
   </section>
 
   <!-- Collection -->
   <section id="collection" class="collection">
-    <div class="mono-label section-label">[ КОЛЛЕКЦИЯ ]</div>
+    <div class="label section-label">[ КОЛЛЕКЦИЯ ]</div>
     <div class="product-grid" id="product-grid">
       <!-- Products injected via JS -->
     </div>
@@ -797,9 +969,8 @@
   <section id="about" class="about">
     <div class="about-images">
       <img src="https://cdn.phototourl.com/anon/2026-11-25-0acee375-2b5a-4d5e-ac54-478b07802ac1.jpg" class="about-img" alt="Deviance 1">
-      <img src="https://cdn.phototourl.com/anon/2026-11-25-7b997ac6-91b5-494f-bab2-c8e3971ae0a4.jpg" class="about-img" alt="Deviance 2">
-      <img src="https://cdn.phototourl.com/anon/2026-11-25-6a6c645c-4877-47b5-b219-f86005fa46bd.jpg" class="about-img" alt="Deviance 3">
-      <img src="https://cdn.phototourl.com/anon/2026-11-25-bf6565e4-badc-42ae-8747-81aa9297a240.jpg" class="about-img" alt="Deviance 4">
+      <img src="https://cdn.phototourl.com/anon/2026-11-25-6a6c645c-4877-47b5-b219-f86005fa46bd.jpg" class="about-img" alt="Deviance 2">
+      <img src="https://cdn.phototourl.com/anon/2026-11-25-bf6565e4-badc-42ae-8747-81aa9297a240.jpg" class="about-img" alt="Deviance 3">
     </div>
     <div class="about-text">
       <h2>СВОБОДА —<br>БЫТЬ СОБОЙ.</h2>
@@ -819,18 +990,18 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-content">
-      <p class="mono-label">© 2026 Deviance</p>
+      <p class="footer-brand">© 2026 Deviance</p>
       <div class="footer-links">
-        <button class="footer-btn" onclick="scrollToSection('collection')">КАТАЛОГ</button>
-        <button class="footer-btn" onclick="openPage('offer-page')">ОФЕРТА</button>
-        <button class="footer-btn" onclick="openPage('privacy-page')">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</button>
+        <button class="footer-btn" onclick="scrollToSection('collection')">Каталог</button>
+        <button class="footer-btn" onclick="openPage('offer-page')">Оферта</button>
+        <button class="footer-btn" onclick="openPage('privacy-page')">Политика конфиденциальности</button>
       </div>
     </div>
   </footer>
 
   <!-- Product Detail Modal -->
-  <div id="product-modal" class="modal-page" style="background: var(--color-cream); color: var(--color-ink);">
-    <button class="back-btn" onclick="closeModal('product-modal')" style="border-color: var(--color-light-rule); color: var(--color-ink);">← НАЗАД В КАТАЛОГ</button>
+  <div id="product-modal" class="modal-page" style="background: var(--color-cream); color: #010101;">
+    <button class="back-btn" onclick="closeModal('product-modal')" style="border-color: var(--color-light-rule); color: #010101;">← Назад в каталог</button>
     <div class="product-detail" id="product-detail-content">
       <!-- Populated by JS -->
     </div>
@@ -838,9 +1009,9 @@
 
   <!-- Offer Page -->
   <div id="offer-page" class="modal-page">
-    <button class="back-btn" onclick="closeModal('offer-page')">← НАЗАД</button>
+    <button class="back-btn" onclick="closeModal('offer-page')">← Назад</button>
     <div class="legal-text">
-      <h2 style="font-size: 24px; margin-bottom: 32px;">Публичная оферта (договор купли-продажи товара)</h2>
+      <h2>Публичная оферта (договор купли-продажи товара)</h2>
       <p>Настоящий документ является официальным предложением (публичной офертой) Самозанятого Разживина Ярослава Игоревича (далее — «Продавец») заключить договор розничной купли-продажи Товара дистанционным способом на условиях, изложенных ниже.</p>
       <p>В соответствии с пунктом 2 статьи 437 Гражданского кодекса Российской Федерации (ГК РФ), в случае принятия изложенных ниже условий и оплаты товара, физическое лицо, производящее акцепт этой оферты, становится «Покупателем».</p>
       
@@ -906,9 +1077,9 @@
 
   <!-- Privacy Policy Page -->
   <div id="privacy-page" class="modal-page">
-    <button class="back-btn" onclick="closeModal('privacy-page')">← НАЗАД</button>
+    <button class="back-btn" onclick="closeModal('privacy-page')">← Назад</button>
     <div class="legal-text">
-      <h2 style="font-size: 24px; margin-bottom: 32px;">Политика в отношении обработки персональных данных</h2>
+      <h2>Политика в отношении обработки персональных данных</h2>
       
       <h3>1. Общие положения</h3>
       <p>Настоящая политика обработки персональных данных составлена в соответствии с требованиями Федерального закона от 27.07.2006. № 152-ФЗ «О персональных данных» (далее — Закон о персональных данных) и определяет порядок обработки персональных данных и меры по обеспечению безопасности персональных данных, предпринимаемые Разживин Ярослав Игоревич (далее — Оператор).</p>
@@ -1170,7 +1341,7 @@
             <p>${currentDetailProduct.care}</p>
           </div>
           
-          <button class="add-to-cart-btn" onclick="updateCart()">В КОРЗИНУ</button>
+          <button class="add-to-cart-btn" onclick="updateCart()">В корзину</button>
         </div>
       `;
       
@@ -1197,22 +1368,20 @@
 
     function updateCart() {
       cartCount++;
-      // Update cart icon with count badge
       const cartBtn = document.querySelector('.icon-btn');
       let badge = cartBtn.querySelector('.cart-badge');
       if (!badge) {
         badge = document.createElement('span');
         badge.className = 'cart-badge';
-        badge.style.cssText = 'position:absolute;top:-4px;right:-4px;background:#f9f4eb;color:#000;font-size:9px;font-family:JetBrains Mono,monospace;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;';
+        badge.style.cssText = 'position:absolute;top:-4px;right:-4px;background:#f0f0f0;color:#000;font-size:10px;font-family:JetBrains Mono,monospace;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;';
         cartBtn.style.position = 'relative';
         cartBtn.appendChild(badge);
       }
       badge.innerText = cartCount;
       
-      // Visual feedback
       const btn = document.querySelector('.add-to-cart-btn');
       const originalText = btn.innerText;
-      btn.innerText = "ДОБАВЛЕНО ✓";
+      btn.innerText = "Добавлено ✓";
       setTimeout(() => {
         btn.innerText = originalText;
       }, 1000);
