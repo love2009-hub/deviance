@@ -166,7 +166,7 @@
       transform: translateX(-50%);
       width: calc(100% - 32px);
       max-width: 1280px;
-      height: 72px;
+      height: 80px;
       background: rgba(0, 0, 0, 0.6);
       backdrop-filter: blur(25px);
       -webkit-backdrop-filter: blur(25px);
@@ -189,7 +189,7 @@
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      height: 60px;
+      height: 70px;
     }
 
     .header-center img {
@@ -221,7 +221,7 @@
       height: 20px;
     }
 
-    /* Hamburger Menu */
+    /* Hamburger */
     .hamburger {
       width: 32px;
       height: 32px;
@@ -263,8 +263,8 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.95);
-      backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.97);
+      backdrop-filter: blur(12px);
       z-index: 150;
       display: flex;
       flex-direction: column;
@@ -281,7 +281,34 @@
       pointer-events: all;
     }
 
-    .mobile-menu a, .mobile-menu button {
+    .mobile-menu-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      background: transparent;
+      border: 1px solid var(--color-edge-subtle);
+      border-radius: var(--radius-action);
+      color: var(--color-silver);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .mobile-menu-close:hover {
+      background: rgba(255,255,255,0.05);
+      color: var(--color-ink);
+    }
+
+    .mobile-menu-close svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .mobile-menu a, .mobile-menu button:not(.mobile-menu-close) {
       color: var(--color-ink);
       text-decoration: none;
       font-family: var(--font-display);
@@ -298,7 +325,7 @@
       gap: var(--spacing-md);
     }
 
-    .mobile-menu a:hover, .mobile-menu button:hover {
+    .mobile-menu a:hover, .mobile-menu button:not(.mobile-menu-close):hover {
       opacity: 0.7;
     }
 
@@ -327,7 +354,7 @@
       background-image: url('https://cdn.phototourl.com/anon/2026-11-25-ee1c7116-7acc-4251-b3af-98c347d9d898.jpg');
       background-size: cover;
       background-position: center;
-      filter: brightness(0.75) contrast(1.1);
+      filter: brightness(0.75) contrast(1.05);
       z-index: 0;
     }
 
@@ -347,52 +374,40 @@
       height: 48px;
       padding: 0 24px;
       border-radius: var(--radius-action);
-      border: 2px solid rgba(255,255,255,0.35);
-      background: rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
+      border: 1px solid rgba(255,255,255,0.55);
+      background: rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       color: var(--color-ink);
       text-decoration: none;
       font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 16px;
-      line-height: 1.5;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
       cursor: pointer;
       transition: all 0.2s cubic-bezier(.4, 0, .2, 1);
-      box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.1), 0px 1px 2px -1px rgba(0,0,0,0.1), 0 0 20px rgba(255,255,255,0.05);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-cta::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-      transition: left 0.5s ease;
-    }
-
-    .hero-cta:hover::before {
-      left: 100%;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 4px 20px rgba(0,0,0,0.25);
     }
 
     .hero-cta:hover {
-      border-color: rgba(255,255,255,0.6);
-      background: rgba(255,255,255,0.1);
-      box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.1), 0px 1px 2px -1px rgba(0,0,0,0.1), 0 0 30px rgba(255,255,255,0.1);
-      transform: translateY(-1px);
+      border-color: rgba(255,255,255,0.9);
+      background: rgba(0, 0, 0, 0.4);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.15), 0 4px 24px rgba(0,0,0,0.35);
     }
 
     /* Collection */
     .collection {
       padding: var(--spacing-xxxl) var(--spacing-md);
-      max-width: 1280px;
-      margin: 0 auto;
+      width: 100%;
       background: var(--color-cream);
       color: #010101;
+    }
+
+    .collection-inner {
+      max-width: 1280px;
+      margin: 0 auto;
     }
 
     .collection .section-label {
@@ -403,7 +418,7 @@
 
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: var(--spacing-md);
     }
 
@@ -427,6 +442,7 @@
       border-radius: var(--radius);
       overflow: hidden;
       margin-bottom: var(--spacing-xs);
+      touch-action: pan-y;
     }
 
     .product-image {
@@ -434,6 +450,8 @@
       height: 100%;
       object-fit: cover;
       transition: opacity 0.3s;
+      user-select: none;
+      -webkit-user-drag: none;
     }
 
     .slider-btn {
@@ -453,6 +471,7 @@
       font-family: var(--font-mono);
       font-size: 14px;
       transition: all 0.2s;
+      z-index: 2;
     }
 
     .slider-btn:hover {
@@ -463,83 +482,84 @@
     .slider-btn.prev { left: 8px; }
     .slider-btn.next { right: 8px; }
 
-    .product-info {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      padding: 0 4px;
-      gap: 8px;
-    }
-
     .product-name {
       font-family: var(--font-display);
       font-size: 14px;
-      line-height: 1.4;
+      line-height: 1.6;
+      padding: 0 4px;
       color: #010101;
-      flex: 1;
     }
 
     .product-price {
       font-family: var(--font-display);
-      font-size: 14px;
       font-weight: 500;
+      font-size: 15px;
       line-height: 1.4;
+      padding: 4px 4px 0;
       color: #010101;
-      white-space: nowrap;
+      letter-spacing: -0.01em;
     }
 
     /* About */
     .about {
       padding: var(--spacing-xxxl) var(--spacing-md);
+      width: 100%;
+      background: var(--color-cream);
+      color: #010101;
+    }
+
+    .about-inner {
       max-width: 1280px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1.2fr 1fr;
       gap: var(--spacing-lg);
       align-items: center;
-      background: var(--color-cream);
-      color: #010101;
     }
 
     .about-images {
       position: relative;
-      height: 500px;
+      height: 600px;
       width: 100%;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 4px;
     }
 
     .about-img {
+      position: absolute;
       border-radius: var(--radius);
       object-fit: cover;
       border: none;
       background: var(--color-canvas);
-      width: 100%;
-      height: 100%;
     }
 
     .about-img:nth-child(1) {
-      grid-column: 1;
-      grid-row: 1 / 3;
+      width: 48%;
+      height: 62%;
+      top: 0;
+      left: 0;
+      z-index: 1;
     }
 
     .about-img:nth-child(2) {
-      grid-column: 2;
-      grid-row: 1;
+      width: 35%;
+      height: 42%;
+      top: 0;
+      left: 49%;
+      z-index: 2;
     }
 
     .about-img:nth-child(3) {
-      grid-column: 2;
-      grid-row: 2;
+      width: 45%;
+      height: 50%;
+      bottom: 0;
+      left: 28%;
+      z-index: 3;
     }
 
     .about-text h2 {
       font-family: var(--font-display);
       font-weight: 400;
-      font-size: clamp(32px, 4vw, 48px);
-      line-height: 1.1;
+      font-size: clamp(40px, 5vw, 56px);
+      line-height: 1.15;
       letter-spacing: -0.05em;
       margin-bottom: var(--spacing-md);
       color: #010101;
@@ -548,35 +568,69 @@
     .about-text p {
       font-family: var(--font-display);
       font-weight: 400;
-      font-size: clamp(14px, 1.5vw, 18px);
-      line-height: 1.4;
+      font-size: 22px;
+      line-height: 1.3;
       opacity: 0.9;
       max-width: 520px;
       color: #010101;
+      letter-spacing: -0.01em;
     }
 
     /* Contacts */
     .contacts {
-      padding: var(--spacing-xxxl) var(--spacing-md) var(--spacing-xxl);
+      padding: var(--spacing-xxxl) var(--spacing-md) 40px;
       max-width: 1280px;
       margin: 0 auto;
-      text-align: center;
     }
 
-    .contacts h2 {
+    .contacts-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-lg);
+      align-items: start;
+      padding: var(--spacing-xxl) var(--spacing-lg);
+      border-top: 1px solid var(--color-edge-subtle);
+      border-bottom: 1px solid var(--color-edge-subtle);
+    }
+
+    .contacts-heading h2 {
       font-family: var(--font-display);
       font-weight: 400;
       font-size: clamp(40px, 6vw, 56px);
       line-height: 1.2;
       letter-spacing: -0.05em;
-      margin-bottom: var(--spacing-xl);
+      margin-bottom: var(--spacing-sm);
     }
 
-    .contact-links {
+    .contacts-heading p {
+      font-family: var(--font-display);
+      font-size: 18px;
+      line-height: 1.5;
+      color: var(--color-muted);
+      max-width: 400px;
+    }
+
+    .contacts-links {
       display: flex;
       flex-direction: column;
       gap: var(--spacing-sm);
-      align-items: center;
+      align-items: flex-end;
+      text-align: right;
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .contact-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      line-height: 18px;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      color: var(--color-muted);
     }
 
     .contact-link {
@@ -585,8 +639,6 @@
       font-family: var(--font-display);
       font-size: 18px;
       line-height: 1.5;
-      border-bottom: 1px solid var(--color-edge-subtle);
-      padding-bottom: 4px;
       transition: color 0.15s cubic-bezier(.4, 0, .2, 1);
     }
 
@@ -606,14 +658,14 @@
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: var(--spacing-lg);
+      gap: var(--spacing-sm);
       align-items: center;
     }
 
     .footer-brand {
       font-family: var(--font-serif);
       font-weight: 400;
-      font-size: 32px;
+      font-size: 24px;
       line-height: 1;
       letter-spacing: -0.01em;
       color: var(--color-ink);
@@ -621,7 +673,7 @@
 
     .footer-links {
       display: flex;
-      gap: var(--spacing-sm);
+      gap: var(--spacing-xs);
       flex-wrap: wrap;
       justify-content: center;
     }
@@ -630,12 +682,12 @@
       background: transparent;
       border: 1px solid var(--color-edge-subtle);
       color: var(--color-link);
-      height: 48px;
-      padding: 0 20px;
+      height: 40px;
+      padding: 0 16px;
       border-radius: var(--radius-action);
       font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 16px;
+      font-weight: 500;
+      font-size: 13px;
       line-height: 1.5;
       cursor: pointer;
       transition: all 0.2s cubic-bezier(.4, 0, .2, 1);
@@ -649,7 +701,7 @@
       color: #000;
     }
 
-    /* Modals / Pages */
+    /* Modals */
     .modal-page {
       position: fixed;
       top: 0;
@@ -731,7 +783,7 @@
       color: var(--color-ink);
     }
 
-    /* Product Detail Modal */
+    /* Product Detail */
     .product-detail {
       max-width: 1024px;
       margin: 0 auto;
@@ -755,6 +807,7 @@
       border: 1px solid var(--color-edge);
       border-bottom-width: 0px;
       background: #e0dcd4;
+      touch-action: pan-y;
     }
 
     .product-detail-info h2 {
@@ -866,18 +919,16 @@
       .header {
         width: calc(100% - 32px);
         padding: 0 12px;
-        height: 64px;
+        height: 70px;
       }
       
-      .header-center {
-        height: 52px;
+      .header-center img {
+        height: 58px;
       }
       
       .hero-bg {
-        background-size: contain;
-        background-position: center bottom;
-        background-repeat: no-repeat;
-        background-color: #0a0a0a;
+        background-size: cover;
+        background-position: center 40%;
       }
       
       .product-grid {
@@ -886,31 +937,32 @@
       }
       
       .product-name {
-        font-size: 11px;
+        font-size: 12px;
       }
       
-      .product-price {
-        font-size: 11px;
-      }
-      
-      .about {
+      .about-inner {
         grid-template-columns: 1fr;
-        padding: var(--spacing-xxl) var(--spacing-sm);
       }
       
       .about-images {
-        height: 350px;
+        height: 420px;
         margin-bottom: var(--spacing-lg);
       }
       
+      .about-img:nth-child(1) { width: 55%; height: 60%; left: 0; top: 0; }
+      .about-img:nth-child(2) { width: 42%; height: 38%; left: 56%; top: 0; }
+      .about-img:nth-child(3) { width: 50%; height: 45%; left: 25%; bottom: 0; }
+      
       .about-text h2 {
-        font-size: clamp(28px, 8vw, 36px);
+        font-size: clamp(32px, 8vw, 44px);
+        line-height: 1.1;
         margin-bottom: var(--spacing-sm);
       }
       
       .about-text p {
-        font-size: clamp(13px, 3.5vw, 15px);
+        font-size: 17px;
         line-height: 1.35;
+        max-width: 100%;
       }
       
       .product-detail {
@@ -926,11 +978,26 @@
         padding: var(--spacing-xxl) var(--spacing-sm);
       }
       
-      .contacts {
-        padding: var(--spacing-xxl) var(--spacing-sm) var(--spacing-lg);
+      .about {
+        padding: var(--spacing-xxl) var(--spacing-sm);
       }
       
-      .mobile-menu a, .mobile-menu button {
+      .contacts-inner {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+        padding: var(--spacing-xl) 0;
+      }
+      
+      .contacts-links {
+        align-items: flex-start;
+        text-align: left;
+      }
+      
+      .contacts {
+        padding: var(--spacing-xxl) var(--spacing-sm) 24px;
+      }
+      
+      .mobile-menu a, .mobile-menu button:not(.mobile-menu-close) {
         font-size: 36px;
       }
     }
@@ -949,10 +1016,6 @@
         width: 28px;
         height: 28px;
         font-size: 12px;
-      }
-      
-      .about-images {
-        height: 300px;
       }
     }
   </style>
@@ -984,6 +1047,12 @@
 
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-menu-close" onclick="toggleMenu()" aria-label="Закрыть меню">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
     <button onclick="closeMenuAndScroll('hero')">Главная</button>
     <button onclick="closeMenuAndScroll('collection')">Коллекция</button>
     <button onclick="closeMenuAndScroll('contacts')">Контакты</button>
@@ -1003,31 +1072,46 @@
 
   <!-- Collection -->
   <section id="collection" class="collection">
-    <div class="label section-label">[ КОЛЛЕКЦИЯ ]</div>
-    <div class="product-grid" id="product-grid">
-      <!-- Products injected via JS -->
+    <div class="collection-inner">
+      <div class="label section-label">[ КОЛЛЕКЦИЯ ]</div>
+      <div class="product-grid" id="product-grid">
+        <!-- Products injected via JS -->
+      </div>
     </div>
   </section>
 
   <!-- About -->
   <section id="about" class="about">
-    <div class="about-images">
-      <img src="https://cdn.phototourl.com/anon/2026-11-25-0acee375-2b5a-4d5e-ac54-478b07802ac1.jpg" class="about-img" alt="Deviance 1">
-      <img src="https://cdn.phototourl.com/anon/2026-11-25-6a6c645c-4877-47b5-b219-f86005fa46bd.jpg" class="about-img" alt="Deviance 2">
-      <img src="https://cdn.phototourl.com/anon/2026-11-25-bf6565e4-badc-42ae-8747-81aa9297a240.jpg" class="about-img" alt="Deviance 3">
-    </div>
-    <div class="about-text">
-      <h2>СВОБОДА —<br>БЫТЬ СОБОЙ.</h2>
-      <p>Для нас DEVIANCE — это выбор жить по собственным правилам. Искать приключения. Рисковать. Не откладывать жизнь на потом. Мы создаём одежду, которая говорит о твоём характере ещё до первого слова.</p>
+    <div class="about-inner">
+      <div class="about-images">
+        <img src="https://cdn.phototourl.com/anon/2026-11-25-0acee375-2b5a-4d5e-ac54-478b07802ac1.jpg" class="about-img" alt="Deviance 1">
+        <img src="https://cdn.phototourl.com/anon/2026-11-25-7b997ac6-91b5-494f-bab2-c8e3971ae0a4.jpg" class="about-img" alt="Deviance 2">
+        <img src="https://cdn.phototourl.com/anon/2026-11-25-6a6c645c-4877-47b5-b219-f86005fa46bd.jpg" class="about-img" alt="Deviance 3">
+      </div>
+      <div class="about-text">
+        <h2>СВОБОДА —<br>БЫТЬ СОБОЙ.</h2>
+        <p>Для нас DEVIANCE — это выбор жить по собственным правилам. Искать приключения. Рисковать. Не откладывать жизнь на потом. Мы создаём одежду, которая говорит о твоём характере ещё до первого слова.</p>
+      </div>
     </div>
   </section>
 
   <!-- Contacts -->
   <section id="contacts" class="contacts">
-    <h2>БЛИЖЕ ЧЕМ КАЖЕТСЯ</h2>
-    <div class="contact-links">
-      <a href="https://t.me/hello_Deviance" target="_blank" class="contact-link">Telegram: @hello_Deviance</a>
-      <a href="mailto:helloo.deviance@gmail.com" class="contact-link">Email: helloo.deviance@gmail.com</a>
+    <div class="contacts-inner">
+      <div class="contacts-heading">
+        <h2>Ближе чем кажется</h2>
+        <p>Связаться с нами можно любым удобным способом. Мы всегда на связи.</p>
+      </div>
+      <div class="contacts-links">
+        <div class="contact-item">
+          <span class="contact-label">Telegram</span>
+          <a href="https://t.me/hello_Deviance" target="_blank" class="contact-link">@hello_Deviance</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Email</span>
+          <a href="mailto:helloo.deviance@gmail.com" class="contact-link">helloo.deviance@gmail.com</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1313,17 +1397,54 @@
       const grid = document.getElementById('product-grid');
       grid.innerHTML = products.map(product => `
         <div class="product-card" id="card-${product.id}" onclick="openProduct(${product.id})">
-          <div class="product-image-container">
+          <div class="product-image-container" data-product-id="${product.id}">
             <img src="${product.images[0]}" class="product-image" data-index="0" alt="${product.name}">
             <button class="slider-btn prev" onclick="event.stopPropagation(); changeImage(${product.id}, -1)">←</button>
             <button class="slider-btn next" onclick="event.stopPropagation(); changeImage(${product.id}, 1)">→</button>
           </div>
-          <div class="product-info">
-            <div class="product-name">${product.name}</div>
-            <div class="product-price">${product.price}</div>
-          </div>
+          <div class="product-name">${product.name}</div>
+          <div class="product-price">${product.price}</div>
         </div>
       `).join('');
+      
+      // Add swipe listeners
+      document.querySelectorAll('.product-image-container').forEach(container => {
+        addSwipeListener(container);
+      });
+    }
+
+    // Swipe functionality
+    function addSwipeListener(element) {
+      let startX = 0;
+      let currentX = 0;
+      let isSwiping = false;
+      
+      element.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        isSwiping = true;
+      }, { passive: true });
+      
+      element.addEventListener('touchmove', (e) => {
+        if (!isSwiping) return;
+        currentX = e.touches[0].clientX;
+      }, { passive: true });
+      
+      element.addEventListener('touchend', (e) => {
+        if (!isSwiping) return;
+        isSwiping = false;
+        
+        const diff = startX - currentX;
+        const threshold = 50;
+        
+        if (Math.abs(diff) > threshold) {
+          const productId = parseInt(element.dataset.productId);
+          if (diff > 0) {
+            changeImage(productId, 1);
+          } else {
+            changeImage(productId, -1);
+          }
+        }
+      });
     }
 
     // Image Slider for Grid
@@ -1394,6 +1515,44 @@
       
       document.getElementById('product-modal').classList.add('active');
       document.body.style.overflow = 'hidden';
+      
+      // Add swipe to detail image
+      const detailImg = document.getElementById('detail-main-img');
+      if (detailImg) {
+        addSwipeToDetail(detailImg);
+      }
+    }
+
+    function addSwipeToDetail(element) {
+      let startX = 0;
+      let currentX = 0;
+      let isSwiping = false;
+      
+      element.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        isSwiping = true;
+      }, { passive: true });
+      
+      element.addEventListener('touchmove', (e) => {
+        if (!isSwiping) return;
+        currentX = e.touches[0].clientX;
+      }, { passive: true });
+      
+      element.addEventListener('touchend', (e) => {
+        if (!isSwiping) return;
+        isSwiping = false;
+        
+        const diff = startX - currentX;
+        const threshold = 50;
+        
+        if (Math.abs(diff) > threshold) {
+          if (diff > 0) {
+            changeDetailImage(1);
+          } else {
+            changeDetailImage(-1);
+          }
+        }
+      });
     }
 
     function changeDetailImage(direction) {
