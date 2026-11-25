@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DEVIANCE — Свобода быть собой</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-canvas: #1a1c1c;
+      --color-text: #f9f4eb;
+      --color-black: #000000;
+      --color-dark-rule: rgba(249, 244, 235, 0.2);
+      --color-light-rule: rgba(1, 1, 1, 0.1);
+      --color-ink: #010101;
+      --color-cream: #f9f4eb;
+      --color-light-faint: rgba(1, 1, 1, 0.05);
+      
+      --font-display: 'Inter', 'Helvetica', 'Arial', sans-serif;
+      --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+      
+      --spacing-xs: 8px;
+      --spacing-sm: 16px;
+      --spacing-md: 24px;
+      --spacing-lg: 40px;
+      --spacing-xl: 80px;
+      --spacing-xxl: 160px;
+      
+      --radius: 4px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--color-canvas);
+      color: var(--color-text);
+      font-family: var(--font-display);
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, .display-text {
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 0.8;
+    }
+
+    .mono-label {
+      font-family: var(--font-mono);
+      font-weight: 500;
+      font-size: 10px;
+      line-height: 18px;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 32px);
+      max-width: 1400px;
+      height: 50px;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      z-index: 100;
+      border: 1px solid var(--color-dark-rule);
+    }
+
+    .header-left, .header-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 28px;
+    }
+
+    .header-center img {
+      height: 100%;
+      width: auto;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
+
+    .icon-btn {
+      background: transparent;
+      border: none;
+      color: var(--color-text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      border-radius: var(--radius);
+      transition: opacity 0.2s;
+    }
+
+    .icon-btn:hover {
+      opacity: 0.7;
+    }
+
+    .icon-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Hamburger Menu */
+    .hamburger {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      padding: 0;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 20px;
+      height: 1.5px;
+      background: var(--color-text);
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(8px);
+      z-index: 150;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-menu.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .mobile-menu a, .mobile-menu button {
+      color: var(--color-text);
+      text-decoration: none;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 28px;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mobile-menu a:hover, .mobile-menu button:hover {
+      opacity: 0.7;
+    }
+
+    .mobile-menu .tg-link {
+      font-size: 18px;
+      opacity: 0.7;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://cdn.phototourl.com/anon/2026-11-25-ee1c7116-7acc-4251-b3af-98c347d9d898.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.5) contrast(1.1);
+      z-index: 0;
+    }
+
+    .hero-logo {
+      position: relative;
+      z-index: 1;
+      width: 240px;
+      max-width: 60vw;
+      opacity: 0.95;
+      filter: brightness(0) invert(1);
+    }
+
+    /* Collection - Light Theme */
+    .collection {
+      padding: var(--spacing-xxl) var(--spacing-lg);
+      max-width: 1440px;
+      margin: 0 auto;
+      background: var(--color-cream);
+      color: var(--color-ink);
+    }
+
+    .collection .section-label {
+      color: var(--color-ink);
+      opacity: 0.7;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: var(--spacing-md);
+    }
+
+    .product-card {
+      cursor: pointer;
+      transition: opacity 0.2s;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      padding: var(--spacing-xs);
+    }
+
+    .product-card:hover {
+      border-color: var(--color-light-rule);
+    }
+
+    .product-image-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: #e0dcd4;
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.3s;
+    }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.9);
+      color: var(--color-ink);
+      border: 1px solid var(--color-light-rule);
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .slider-btn:hover {
+      background: var(--color-ink);
+      color: var(--color-cream);
+    }
+
+    .slider-btn.prev { left: 8px; }
+    .slider-btn.next { right: 8px; }
+
+    .product-name {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      padding: 0 4px;
+      color: var(--color-ink);
+    }
+
+    /* About - Light Theme */
+    .about {
+      padding: var(--spacing-xxl) var(--spacing-lg);
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: var(--spacing-lg);
+      align-items: center;
+      background: var(--color-cream);
+      color: var(--color-ink);
+    }
+
+    .about-images {
+      position: relative;
+      height: 600px;
+      width: 100%;
+    }
+
+    .about-img {
+      position: absolute;
+      border-radius: var(--radius);
+      object-fit: cover;
+      border: none;
+      background: var(--color-canvas);
+    }
+
+    .about-img:nth-child(1) {
+      width: 45%;
+      height: 80%;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .about-img:nth-child(2) {
+      width: 38%;
+      height: 45%;
+      top: 5%;
+      left: 42%;
+      z-index: 2;
+    }
+
+    .about-img:nth-child(3) {
+      width: 40%;
+      height: 50%;
+      bottom: 5%;
+      left: 35%;
+      z-index: 3;
+    }
+
+    .about-img:nth-child(4) {
+      width: 25%;
+      height: 30%;
+      bottom: 15%;
+      right: 0;
+      z-index: 4;
+    }
+
+    .about-text h2 {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      margin-bottom: var(--spacing-md);
+      color: var(--color-ink);
+    }
+
+    .about-text p {
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      line-height: 1.4;
+      opacity: 0.9;
+      max-width: 520px;
+      color: var(--color-ink);
+    }
+
+    /* Contacts */
+    .contacts {
+      padding: var(--spacing-xxl) var(--spacing-lg);
+      max-width: 1440px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contacts h2 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+      align-items: center;
+    }
+
+    .contact-link {
+      color: var(--color-text);
+      text-decoration: none;
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      border-bottom: 1px solid var(--color-dark-rule);
+      padding-bottom: 4px;
+      transition: opacity 0.2s;
+    }
+
+    .contact-link:hover {
+      opacity: 0.7;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--color-dark-rule);
+      padding: var(--spacing-lg);
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1440px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: var(--spacing-sm);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-btn {
+      background: transparent;
+      border: 1px solid var(--color-dark-rule);
+      color: var(--color-text);
+      height: 50px;
+      padding: 0 24px;
+      border-radius: var(--radius);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-btn:hover {
+      background: var(--color-text);
+      color: var(--color-canvas);
+    }
+
+    /* Modals / Pages */
+    .modal-page {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--color-canvas);
+      z-index: 200;
+      overflow-y: auto;
+      display: none;
+      padding: var(--spacing-lg);
+    }
+
+    .modal-page.active {
+      display: block;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      border: 1px solid var(--color-dark-rule);
+      color: var(--color-text);
+      height: 50px;
+      padding: 0 24px;
+      border-radius: var(--radius);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-bottom: var(--spacing-lg);
+      transition: all 0.2s;
+    }
+
+    .back-btn:hover {
+      background: var(--color-text);
+      color: var(--color-canvas);
+    }
+
+    .legal-text {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(249, 244, 235, 0.85);
+      padding-bottom: var(--spacing-xxl);
+    }
+
+    .legal-text h3 {
+      font-size: 16px;
+      margin-top: 32px;
+      margin-bottom: 12px;
+      color: var(--color-text);
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+
+    .legal-text p {
+      margin-bottom: 16px;
+    }
+
+    .legal-text strong {
+      color: var(--color-text);
+    }
+
+    /* Product Detail Modal */
+    .product-detail {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-lg);
+      padding-bottom: var(--spacing-xxl);
+    }
+
+    .product-detail-images {
+      position: sticky;
+      top: 80px;
+    }
+
+    .product-detail-main-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      border-radius: var(--radius);
+      margin-bottom: var(--spacing-xs);
+      border: 1px solid var(--color-light-rule);
+      background: #e0dcd4;
+    }
+
+    .product-detail-info h2 {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      margin-bottom: var(--spacing-sm);
+      color: var(--color-ink);
+    }
+
+    .detail-section {
+      margin-bottom: var(--spacing-md);
+      padding-bottom: var(--spacing-md);
+      border-bottom: 1px solid var(--color-light-rule);
+    }
+
+    .detail-section h4 {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      opacity: 0.7;
+      letter-spacing: -0.02em;
+      color: var(--color-ink);
+    }
+
+    .detail-section p {
+      font-size: 16px;
+      line-height: 1.4;
+      opacity: 0.9;
+      color: var(--color-ink);
+    }
+
+    .size-selector, .color-selector {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .size-btn, .color-btn {
+      height: 40px;
+      min-width: 40px;
+      border: 1px solid var(--color-light-rule);
+      background: transparent;
+      color: var(--color-ink);
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .size-btn.active, .color-btn.active {
+      background: var(--color-ink);
+      color: var(--color-cream);
+      border-color: var(--color-ink);
+    }
+
+    .color-btn {
+      width: 40px;
+      border-radius: var(--radius);
+    }
+
+    .add-to-cart-btn {
+      width: 100%;
+      height: 50px;
+      background: var(--color-ink);
+      color: var(--color-cream);
+      border: none;
+      border-radius: var(--radius);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: var(--spacing-md);
+      transition: opacity 0.2s;
+      letter-spacing: -0.02em;
+    }
+
+    .add-to-cart-btn:hover {
+      opacity: 0.85;
+    }
+
+    .price-tag {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      margin-bottom: 24px;
+      opacity: 0.9;
+      color: var(--color-ink);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header {
+        width: calc(100% - 32px);
+        padding: 0 12px;
+      }
+      
+      .header-center img {
+        height: 24px;
+      }
+      
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      
+      .product-name {
+        font-size: 9px;
+      }
+      
+      .about {
+        grid-template-columns: 1fr;
+        padding: var(--spacing-xl) var(--spacing-sm);
+      }
+      
+      .about-images {
+        height: 450px;
+        margin-bottom: var(--spacing-lg);
+      }
+      
+      .about-img:nth-child(1) { width: 50%; height: 70%; left: 0; top: 0; }
+      .about-img:nth-child(2) { width: 45%; height: 40%; left: 45%; top: 5%; }
+      .about-img:nth-child(3) { width: 45%; height: 45%; left: 30%; bottom: 5%; }
+      .about-img:nth-child(4) { width: 30%; height: 25%; right: 0; bottom: 20%; }
+      
+      .product-detail {
+        grid-template-columns: 1fr;
+      }
+      
+      .product-detail-images {
+        position: relative;
+        top: 0;
+      }
+      
+      .collection {
+        padding: var(--spacing-xl) var(--spacing-sm);
+      }
+      
+      .contacts {
+        padding: var(--spacing-xl) var(--spacing-sm);
+      }
+      
+      .mobile-menu a, .mobile-menu button {
+        font-size: 22px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      
+      .product-card {
+        padding: 4px;
+      }
+      
+      .slider-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <button class="hamburger" id="hamburger-btn" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="header-center">
+      <img src="https://cdn.phototourl.com/anon/2026-11-25-571a6917-1876-40f2-96dc-2863e64b5cf7.png" alt="Deviance Logo">
+    </div>
+    <div class="header-right">
+      <button class="icon-btn" onclick="alert('Корзина: ' + cartCount + ' товаров')" aria-label="Корзина">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <button onclick="closeMenuAndScroll('hero')">Главная</button>
+    <button onclick="closeMenuAndScroll('collection')">Коллекция</button>
+    <button onclick="closeMenuAndScroll('contacts')">Контакты</button>
+    <a href="https://t.me/hello_Deviance" target="_blank" class="tg-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.015-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.009-1.252-.242-1.865-.442-.751-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.015 3.333-1.386 4.025-1.627 4.477-1.635.099-.002.321.023.465.141.121.099.154.232.17.325.015.093.034.305.019.471z"/></svg>
+      Telegram
+    </a>
+  </div>
+
+  <!-- Hero -->
+  <section id="hero" class="hero">
+    <div class="hero-bg"></div>
+    <img src="https://static.tildacdn.pub/tild6638-3161-4262-b333-666166346262/5422820820716821428_.png" alt="Deviance" class="hero-logo">
+  </section>
+
+  <!-- Collection -->
+  <section id="collection" class="collection">
+    <div class="mono-label section-label">[ КОЛЛЕКЦИЯ ]</div>
+    <div class="product-grid" id="product-grid">
+      <!-- Products injected via JS -->
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about">
+    <div class="about-images">
+      <img src="https://cdn.phototourl.com/anon/2026-11-25-0acee375-2b5a-4d5e-ac54-478b07802ac1.jpg" class="about-img" alt="Deviance 1">
+      <img src="https://cdn.phototourl.com/anon/2026-11-25-7b997ac6-91b5-494f-bab2-c8e3971ae0a4.jpg" class="about-img" alt="Deviance 2">
+      <img src="https://cdn.phototourl.com/anon/2026-11-25-6a6c645c-4877-47b5-b219-f86005fa46bd.jpg" class="about-img" alt="Deviance 3">
+      <img src="https://cdn.phototourl.com/anon/2026-11-25-bf6565e4-badc-42ae-8747-81aa9297a240.jpg" class="about-img" alt="Deviance 4">
+    </div>
+    <div class="about-text">
+      <h2>СВОБОДА —<br>БЫТЬ СОБОЙ.</h2>
+      <p>Для нас DEVIANCE — это выбор жить по собственным правилам. Искать приключения. Рисковать. Не откладывать жизнь на потом. Мы создаём одежду, которая говорит о твоём характере ещё до первого слова.</p>
+    </div>
+  </section>
+
+  <!-- Contacts -->
+  <section id="contacts" class="contacts">
+    <h2>БЛИЖЕ ЧЕМ КАЖЕТСЯ</h2>
+    <div class="contact-links">
+      <a href="https://t.me/hello_Deviance" target="_blank" class="contact-link">Telegram: @hello_Deviance</a>
+      <a href="mailto:helloo.deviance@gmail.com" class="contact-link">Email: helloo.deviance@gmail.com</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="mono-label">© 2026 Deviance</p>
+      <div class="footer-links">
+        <button class="footer-btn" onclick="scrollToSection('collection')">КАТАЛОГ</button>
+        <button class="footer-btn" onclick="openPage('offer-page')">ОФЕРТА</button>
+        <button class="footer-btn" onclick="openPage('privacy-page')">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Product Detail Modal -->
+  <div id="product-modal" class="modal-page" style="background: var(--color-cream); color: var(--color-ink);">
+    <button class="back-btn" onclick="closeModal('product-modal')" style="border-color: var(--color-light-rule); color: var(--color-ink);">← НАЗАД В КАТАЛОГ</button>
+    <div class="product-detail" id="product-detail-content">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+
+  <!-- Offer Page -->
+  <div id="offer-page" class="modal-page">
+    <button class="back-btn" onclick="closeModal('offer-page')">← НАЗАД</button>
+    <div class="legal-text">
+      <h2 style="font-size: 24px; margin-bottom: 32px;">Публичная оферта (договор купли-продажи товара)</h2>
+      <p>Настоящий документ является официальным предложением (публичной офертой) Самозанятого Разживина Ярослава Игоревича (далее — «Продавец») заключить договор розничной купли-продажи Товара дистанционным способом на условиях, изложенных ниже.</p>
+      <p>В соответствии с пунктом 2 статьи 437 Гражданского кодекса Российской Федерации (ГК РФ), в случае принятия изложенных ниже условий и оплаты товара, физическое лицо, производящее акцепт этой оферты, становится «Покупателем».</p>
+      
+      <h3>1. Термины и определения</h3>
+      <p><strong>Продавец</strong> — физическое лицо, зарегистрированное в установленном законом порядке и применяющее специальный налоговый режим «Налог на профессиональный доход» (самозанятый).<br>
+      <strong>Покупатель</strong> — дееспособное физическое лицо, имеющее намерение заказать или приобрести Товары исключительно для личных, семейных, домашних и иных нужд, не связанных с осуществлением предпринимательской деятельности.<br>
+      <strong>Сайт</strong> — интернет-сайт, расположенный в сети Интернет по адресу: https://hello-deviance.tilda.ws.<br>
+      <strong>Товар</strong> — одежда и аксессуары собственного производства Продавца, представленные к продаже на Сайте.<br>
+      <strong>Акцепт оферты</strong> — полное и безоговорочное принятие условий настоящей оферты Покупателем путем совершения действий, указанных в разделе 3 настоящей Оферты.</p>
+
+      <h3>2. Предмет договора</h3>
+      <p>2.1. Продавец обязуется передать в собственность Покупателя Товар, выбранный и оплаченный Покупателем на Сайте, а Покупатель обязуется принять и оплатить этот Товар на условиях настоящего Договора.<br>
+      2.2. Продавец гарантирует, что все предлагаемые к продаже Товары изготовлены им лично (являются продукцией собственного производства), не обременены правами третьих лиц, не находятся в залоге и под арестом.</p>
+
+      <h3>3. Порядок заключения договора (Акцепт оферты)</h3>
+      <p>3.1. Ознакомление Покупателя с текстом настоящей Оферты осуществляется при оформлении заказа на Сайте.<br>
+      3.2. Акцептом (принятием) настоящей оферты является совершение Покупателем в совокупности следующих действий:<br>
+      — Выбор Товара на Сайте и заполнение формы заказа (включая ФИО, телефон, адрес доставки).<br>
+      — Простановка галочки (чекбокса) «Я принимаю условия Публичной оферты».<br>
+      — Стопроцентная (100%) предоплата стоимости Товара.<br>
+      3.3. С момента совершения Покупателем указанных действий договор купли-продажи считается заключенным в электронном виде и не требует подписания на бумаге.</p>
+
+      <h3>4. Стоимость товара и порядок расчетов</h3>
+      <p>4.1. Цены на Товар определяются Продавцом в одностороннем порядке и указываются на страницах Сайта в рублях РФ.<br>
+      4.2. Расчеты между Сторонами осуществляются в безналичной форме в порядке 100% предоплаты через платежный модуль, интегрированный на Сайте.<br>
+      4.3. Обязательство Покупателя по оплате считается исполненным с момента зачисления денежных средств на счет Продавца (или обслуживающего Продавца платежного агрегатора).<br>
+      4.4. После подтверждения оплаты Продавец формирует чек в приложении ФНС «Мой налог» и обязуется направить его Покупателю в электронном виде на указанный при оформлении заказа email-адрес или номер телефона.</p>
+
+      <h3>5. Доставка Товара</h3>
+      <p>5.1. Доставка Товара Покупателю осуществляется силами привлеченных служб доставки (СДЭК, Почта России) по выбору Покупателя из доступных вариантов на Сайте.<br>
+      5.2. Стоимость доставки не входит в стоимость Товара и рассчитывается отдельно при оформлении заказа.<br>
+      5.3. Сроки доставки зависят от региона и регламентов работы службы доставки. Продавец не несет ответственности за задержки в доставке, возникшие по вине транспортных компаний после передачи им Товара.<br>
+      5.4. Право собственности на Товар и риск его случайной гибели переходят к Покупателю в момент передачи Товара Покупателю или лицу, указанному в качестве получателя.</p>
+
+      <h3>6. Возврат и обмен Товара</h3>
+      <p>6.1. Покупатель вправе отказаться от Товара надлежащего качества в любое время до его передачи, а после передачи — в течение 7 дней.<br>
+      6.2. Возврат Товара надлежащего качества возможен в случае, если сохранены его товарный вид, фабричные ярлыки, потребительские свойства, а также документ, подтверждающий факт и условия покупки (электронный чек). На одежде не должно быть следов носки, стирки или загрязнений.<br>
+      6.3. В соответствии со ст. 26.1 Закона РФ «О защите прав потребителей», Покупатель не вправе отказаться от Товара надлежащего качества, имеющего индивидуально-определенные свойства (например, одежда, сшитая по индивидуальным меркам Покупателя под заказ), если указанный Товар может быть использован исключительно приобретающим его Покупателем.<br>
+      6.4. При отказе Покупателя от Товара Продавец возвращает ему стоимость Товара, за исключением расходов Продавца на доставку от Покупателя возвращенного товара, не позднее чем через 10 дней со дня предъявления Покупателем соответствующего требования и возврата Товара.</p>
+
+      <h3>7. Персональные данные</h3>
+      <p>7.1. Оформляя заказ на Сайте, Покупатель дает свое согласие Продавцу на сбор, обработку и хранение своих персональных данных (ФИО, адрес доставки, телефон, email) в целях исполнения обязательств по настоящему Договору в соответствии с Федеральным законом № 152-ФЗ «О персональных данных».</p>
+
+      <h3>8. Реквизиты Продавца</h3>
+      <p>
+        <strong>Продавец:</strong><br>
+        ФИО: Разживин Ярослав Игоревич<br>
+        Статус: Налогоплательщик налога на профессиональный доход (Самозанятый)<br>
+        ИНН: 213003882372<br>
+        E-mail: helloo.deviance@gmail.com<br>
+        Телефон: +79278660645<br><br>
+        <strong>Банковские реквизиты (для возвратов или ручных переводов):</strong><br>
+        ФИО получателя: Разживин Ярослав Игоревич<br>
+        Номер счёта получателя: 4081 7810 1000 7886 6203<br>
+        Банк получателя: АО "ТБанк"<br>
+        БИК банка получателя: 044 525 974<br>
+        Корр. счёт: 3010 1810 1452 5000 0974<br>
+        ИНН банка получателя: 7710 1406 79<br>
+        КПП банка получателя: 71 301 001
+      </p>
+    </div>
+  </div>
+
+  <!-- Privacy Policy Page -->
+  <div id="privacy-page" class="modal-page">
+    <button class="back-btn" onclick="closeModal('privacy-page')">← НАЗАД</button>
+    <div class="legal-text">
+      <h2 style="font-size: 24px; margin-bottom: 32px;">Политика в отношении обработки персональных данных</h2>
+      
+      <h3>1. Общие положения</h3>
+      <p>Настоящая политика обработки персональных данных составлена в соответствии с требованиями Федерального закона от 27.07.2006. № 152-ФЗ «О персональных данных» (далее — Закон о персональных данных) и определяет порядок обработки персональных данных и меры по обеспечению безопасности персональных данных, предпринимаемые Разживин Ярослав Игоревич (далее — Оператор).</p>
+      <p>1.1. Оператор ставит своей важнейшей целью и условием осуществления своей деятельности соблюдение прав и свобод человека и гражданина при обработке его персональных данных, в том числе защиты прав на неприкосновенность частной жизни, личную и семейную тайну.</p>
+      <p>1.2. Настоящая политика Оператора в отношении обработки персональных данных (далее — Политика) применяется ко всей информации, которую Оператор может получить о посетителях веб-сайта https://deviance.ru.</p>
+
+      <h3>2. Основные понятия, используемые в Политике</h3>
+      <p>2.1. Автоматизированная обработка персональных данных — обработка персональных данных с помощью средств вычислительной техники.</p>
+      <p>2.2. Блокирование персональных данных — временное прекращение обработки персональных данных (за исключением случаев, если обработка необходима для уточнения персональных данных).</p>
+      <p>2.3. Веб-сайт — совокупность графических и информационных материалов, а также программ для ЭВМ и баз данных, обеспечивающих их доступность в сети интернет по сетевому адресу https://deviance.ru.</p>
+      <p>2.4. Информационная система персональных данных — совокупность содержащихся в базах данных персональных данных и обеспечивающих их обработку информационных технологий и технических средств.</p>
+      <p>2.5. Обезличивание персональных данных — действия, в результате которых невозможно определить без использования дополнительной информации принадлежность персональных данных конкретному Пользователю или иному субъекту персональных данных.</p>
+      <p>2.6. Обработка персональных данных — любое действие (операция) или совокупность действий (операций), совершаемых с использованием средств автоматизации или без использования таких средств с персональными данными, включая сбор, запись, систематизацию, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, передачу (распространение, предоставление, доступ), обезличивание, блокирование, удаление, уничтожение персональных данных.</p>
+      <p>2.7. Оператор — государственный орган, муниципальный орган, юридическое или физическое лицо, самостоятельно или совместно с другими лицами организующие и/или осуществляющие обработку персональных данных, а также определяющие цели обработки персональных данных, состав персональных данных, подлежащих обработке, действия (операции), совершаемые с персональными данными.</p>
+      <p>2.8. Персональные данные — любая информация, относящаяся прямо или косвенно к определенному или определяемому Пользователю веб-сайта https://deviance.ru.</p>
+      <p>2.9. Персональные данные, разрешенные субъектом персональных данных для распространения, — персональные данные, доступ неограниченного круга лиц к которым предоставлен субъектом персональных данных путем дачи согласия на обработку персональных данных, разрешенных субъектом персональных данных для распространения в порядке, предусмотренном Законом о персональных данных (далее — персональные данные, разрешенные для распространения).</p>
+      <p>2.10. Пользователь — любой посетитель веб-сайта https://deviance.ru.</p>
+      <p>2.11. Предоставление персональных данных — действия, направленные на раскрытие персональных данных определенному лицу или определенному кругу лиц.</p>
+      <p>2.12. Распространение персональных данных — любые действия, направленные на раскрытие персональных данных неопределенному кругу лиц (передача персональных данных) или на ознакомление с персональными данными неограниченного круга лиц, в том числе обнародование персональных данных в средствах массовой информации, размещение в информационно-телекоммуникационных сетях или предоставление доступа к персональным данным каким-либо иным способом.</p>
+      <p>2.13. Трансграничная передача персональных данных — передача персональных данных на территорию иностранного государства органу власти иностранного государства, иностранному физическому или иностранному юридическому лицу.</p>
+      <p>2.14. Уничтожение персональных данных — любые действия, в результате которых персональные данные уничтожаются безвозвратно с невозможностью дальнейшего восстановления содержания персональных данных в информационной системе персональных данных и/или уничтожаются материальные носители персональных данных.</p>
+
+      <h3>3. Основные права и обязанности Оператора</h3>
+      <p>3.1. Оператор имеет право: получать от субъекта персональных данных достоверные информацию и/или документы, содержащие персональные данные; в случае отзыва субъектом персональных данных согласия на обработку персональных данных, а также, направления обращения с требованием о прекращении обработки персональных данных, Оператор вправе продолжить обработку персональных данных без согласия субъекта персональных данных при наличии оснований, указанных в Законе о персональных данных; самостоятельно определять состав и перечень мер, необходимых и достаточных для обеспечения выполнения обязанностей, предусмотренных Законом о персональных данных и принятыми в соответствии с ним нормативными правовыми актами, если иное не предусмотрено Законом о персональных данных или другими федеральными законами.</p>
+      <p>3.2. Оператор обязан: предоставлять субъекту персональных данных по его просьбе информацию, касающуюся обработки его персональных данных; организовывать обработку персональных данных в порядке, установленном действующим законодательством РФ; отвечать на обращения и запросы субъектов персональных данных и их законных представителей в соответствии с требованиями Закона о персональных данных; сообщать в уполномоченный орган по защите прав субъектов персональных данных по запросу этого органа необходимую информацию в течение 10 дней с даты получения такого запроса; публиковать или иным образом обеспечивать неограниченный доступ к настоящей Политике в отношении обработки персональных данных; принимать правовые, организационные и технические меры для защиты персональных данных от неправомерного или случайного доступа к ним, уничтожения, изменения, блокирования, копирования, предоставления, распространения персональных данных, а также от иных неправомерных действий в отношении персональных данных; прекратить передачу (распространение, предоставление, доступ) персональных данных, прекратить обработку и уничтожить персональные данные в порядке и случаях, предусмотренных Законом о персональных данных; исполнять иные обязанности, предусмотренные Законом о персональных данных.</p>
+
+      <h3>4. Основные права и обязанности субъектов персональных данных</h3>
+      <p>4.1. Субъекты персональных данных имеют право: получать информацию, касающуюся обработки его персональных данных, за исключением случаев, предусмотренных федеральными законами; требовать от оператора уточнения его персональных данных, их блокирования или уничтожения в случае, если персональные данные являются неполными, устаревшими, неточными, незаконно полученными или не являются необходимыми для заявленной цели обработки; выдвигать условие предварительного согласия при обработке персональных данных в целях продвижения на рынке товаров, работ и услуг; на отзыв согласия на обработку персональных данных, а также, на направление требования о прекращении обработки персональных данных; обжаловать в уполномоченный орган по защите прав субъектов персональных данных или в судебном порядке неправомерные действия или бездействие Оператора при обработке его персональных данных; на осуществление иных прав, предусмотренных законодательством РФ.</p>
+      <p>4.2. Субъекты персональных данных обязаны: предоставлять Оператору достоверные данные о себе; сообщать Оператору об уточнении (обновлении, изменении) своих персональных данных.</p>
+      <p>4.3. Лица, передавшие Оператору недостоверные сведения о себе, либо сведения о другом субъекте персональных данных без согласия последнего, несут ответственность в соответствии с законодательством РФ.</p>
+
+      <h3>5. Принципы обработки персональных данных</h3>
+      <p>5.1. Обработка персональных данных осуществляется на законной и справедливой основе.<br>
+      5.2. Обработка персональных данных ограничивается достижением конкретных, заранее определенных и законных целей.<br>
+      5.3. Не допускается объединение баз данных, содержащих персональные данные, обработка которых осуществляется в целях, несовместимых между собой.<br>
+      5.4. Обработке подлежат только персональные данные, которые отвечают целям их обработки.<br>
+      5.5. Содержание и объем обрабатываемых персональных данных соответствуют заявленным целям обработки.<br>
+      5.6. При обработке персональных данных обеспечивается точность персональных данных, их достаточность, а в необходимых случаях и актуальность по отношению к целям обработки персональных данных.<br>
+      5.7. Хранение персональных данных осуществляется в форме, позволяющей определить субъекта персональных данных, не дольше, чем этого требуют цели обработки персональных данных.</p>
+
+      <h3>6. Цели обработки персональных данных</h3>
+      <p>Цель обработки: информирование пользователя посредством отправки электронных писем.<br>
+      Персональные данные: фамилия, имя, отчество; электронный адрес; номера телефонов; год, месяц, дата и место рождения.<br>
+      Правовые основания: уставные (учредительные) документы Оператора; договоры, заключаемые между оператором и субъектом персональных данных.<br>
+      Вид обработки персональных данных: Сбор, запись, систематизация, накопление, хранение, уничтожение и обезличивание персональных данных; Отправка информационных писем на адрес электронной почты.</p>
+
+      <h3>7. Условия обработки персональных данных</h3>
+      <p>7.1. Обработка персональных данных осуществляется с согласия субъекта персональных данных на обработку его персональных данных.<br>
+      7.2. Обработка персональных данных необходима для достижения целей, предусмотренных международным договором Российской Федерации или законом.<br>
+      7.3. Обработка персональных данных необходима для осуществления правосудия, исполнения судебного акта.<br>
+      7.4. Обработка персональных данных необходима для исполнения договора, стороной которого либо выгодоприобретателем или поручителем по которому является субъект персональных данных.<br>
+      7.5. Обработка персональных данных необходима для осуществления прав и законных интересов оператора или третьих лиц.<br>
+      7.6. Осуществляется обработка персональных данных, доступ неограниченного круга лиц к которым предоставлен субъектом персональных данных.<br>
+      7.7. Осуществляется обработка персональных данных, подлежащих опубликованию или обязательному раскрытию в соответствии с федеральным законом.</p>
+
+      <h3>8. Порядок сбора, хранения, передачи и других видов обработки персональных данных</h3>
+      <p>Безопасность персональных данных, которые обрабатываются Оператором, обеспечивается путем реализации правовых, организационных и технических мер.</p>
+      <p>8.1. Оператор обеспечивает сохранность персональных данных и принимает все возможные меры, исключающие доступ к персональным данным неуполномоченных лиц.<br>
+      8.2. Персональные данные Пользователя никогда, ни при каких условиях не будут переданы третьим лицам, за исключением случаев, связанных с исполнением действующего законодательства.<br>
+      8.3. В случае выявления неточностей в персональных данных, Пользователь может актуализировать их самостоятельно, путем направления Оператору уведомление на адрес электронной почты Оператора helloo.deviance@gmail.com с пометкой «Актуализация персональных данных».<br>
+      8.4. Срок обработки персональных данных определяется достижением целей, для которых были собраны персональные данные. Пользователь может в любой момент отозвать свое согласие на обработку персональных данных, направив Оператору уведомление посредством электронной почты на электронный адрес Оператора helloo.deviance@gmail.com с пометкой «Отзыв согласия на обработку персональных данных».<br>
+      8.5. Вся информация, которая собирается сторонними сервисами, хранится и обрабатывается указанными лицами в соответствии с их Пользовательским соглашением.<br>
+      8.6. Установленные субъектом персональных данных запреты на передачу не действуют в случаях обработки персональных данных в государственных, общественных и иных публичных интересах.<br>
+      8.7. Оператор при обработке персональных данных обеспечивает конфиденциальность персональных данных.<br>
+      8.8. Оператор осуществляет хранение персональных данных в форме, позволяющей определить субъекта персональных данных, не дольше, чем этого требуют цели обработки.<br>
+      8.9. Условием прекращения обработки персональных данных может являться достижение целей обработки, истечение срока действия согласия, отзыв согласия или выявление неправомерной обработки.</p>
+
+      <h3>9. Перечень действий, производимых Оператором с полученными персональными данными</h3>
+      <p>9.1. Оператор осуществляет сбор, запись, систематизацию, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, передачу, обезличивание, блокирование, удаление и уничтожение персональных данных.<br>
+      9.2. Оператор осуществляет автоматизированную обработку персональных данных с получением и/или передачей полученной информации по информационно-телекоммуникационным сетям или без таковой.</p>
+
+      <h3>10. Трансграничная передача персональных данных</h3>
+      <p>10.1. Оператор до начала осуществления деятельности по трансграничной передаче персональных данных обязан уведомить уполномоченный орган по защите прав субъектов персональных данных.<br>
+      10.2. Оператор до подачи вышеуказанного уведомления, обязан получить от органов власти иностранного государства соответствующие сведения.</p>
+
+      <h3>11. Конфиденциальность персональных данных</h3>
+      <p>Оператор и иные лица, получившие доступ к персональным данным, обязаны не раскрывать третьим лицам и не распространять персональные данные без согласия субъекта персональных данных, если иное не предусмотрено федеральным законом.</p>
+
+      <h3>12. Заключительные положения</h3>
+      <p>12.1. Пользователь может получить любые разъяснения по интересующим вопросам, касающимся обработки его персональных данных, обратившись к Оператору с помощью электронной почты helloo.deviance@gmail.com.<br>
+      12.2. В данном документе будут отражены любые изменения политики обработки персональных данных Оператором. Политика действует бессрочно до замены ее новой версией.<br>
+      12.3. Актуальная версия Политики в свободном доступе расположена в сети Интернет.</p>
+    </div>
+  </div>
+
+  <script>
+    // Product Data
+    const products = [
+      {
+        id: 1,
+        name: "ФУТБОЛКА OVERSIZE «СВОБОДА»",
+        images: [
+          "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&h=800&fit=crop",
+          "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=600&h=800&fit=crop",
+          "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&h=800&fit=crop"
+        ],
+        price: "4 500 ₽",
+        sizes: ["S", "M", "L", "XL"],
+        colors: ["#1a1c1c", "#f9f4eb", "#8b0000"],
+        description: "Базовая футболка оверсайз кроя из плотного хлопка. Идеальная основа для любого образа, сохраняющая форму после множества стирок.",
+        composition: "100% хлопок, плотность 240 г/м²",
+        care: "Стирка при 30°C. Не отбеливать. Гладить при низкой температуре с изнаночной стороны."
+      },
+      {
+        id: 2,
+        name: "ХУДИ «ПРАВИЛА»",
+        images: [
+          "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&h=800&fit=crop",
+          "https://images.unsplash.com/photo-1578768079052-aa76e52ff62e?w=600&h=800&fit=crop",
+          "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&h=800&fit=crop"
+        ],
+        price: "8 900 ₽",
+        sizes: ["S", "M", "L", "XL"],
+        colors: ["#1a1c1c", "#474745"],
+        description: "Теплое худи с начесом. Свободный крой, спущенная линия плеча, усиленные швы. Капюшон на подкладке.",
+        composition: "80% хлопок, 20% полиэстер, футер 3-нитка",
+        care: "Стирка при 30°C в деликатном режиме. Не сушить в барабане."
+      },
+      {
+        id: 3,
+        name: "БРЮКИ КАРГО «РИСК»",
+        images: [
+          "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600&h=800&fit=crop",
+          "https://images.unsplash.com/photo-1517445312882-64f8f1200fe3?w=600&h=800&fit=crop",
+          "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&h=800&fit=crop"
+        ],
+        price: "7 200 ₽",
+        sizes: ["S", "M", "L"],
+        colors: ["#1a1c1c", "#3d3d3d"],
+        description: "Функциональные брюки с накладными карманами. Прочная ткань, устойчивая к износу, регулировка по талии.",
+        composition: "100% нейлон с водоотталкивающей пропиткой",
+        care: "Бережная стирка при 30°C. Не гладить."
+      },
+      {
+        id: 4,
+        name: "ЛОНГСЛИВ «ХАРАКТЕР»",
+        images: [
+          "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&h=800&fit=crop",
+          "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?w=600&h=800&fit=crop",
+          "https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=600&h=800&fit=crop"
+        ],
+        price: "5 200 ₽",
+        sizes: ["S", "M", "L", "XL"],
+        colors: ["#1a1c1c", "#f9f4eb"],
+        description: "Лонгслив из мягкого хлопка с принтом на груди. Универсальная вещь для многослойных образов.",
+        composition: "100% хлопок, интерлок",
+        care: "Стирка при 30°C. Не отбеливать."
+      },
+      {
+        id: 5,
+        name: "ШОРТЫ «ПРИКЛЮЧЕНИЯ»",
+        images: [
+          "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=600&h=800&fit=crop",
+          "https://images.unsplash.com/photo-1565084888279-aca607ecce0c?w=600&h=800&fit=crop",
+          "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=600&h=800&fit=crop"
+        ],
+        price: "4 800 ₽",
+        sizes: ["S", "M", "L"],
+        colors: ["#1a1c1c", "#3d3d3d", "#8b7355"],
+        description: "Укороченные шорты свободного кроя. Идеальны для активного отдыха и города.",
+        composition: "65% хлопок, 35% полиэстер",
+        care: "Стирка при 30°C. Можно сушить в барабане."
+      },
+      {
+        id: 6,
+        name: "КЕПКА «DEVIANCE»",
+        images: [
+          "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=600&h=800&fit=crop",
+          "https://images.unsplash.com/photo-1534215754734-18e55d13e346?w=600&h=800&fit=crop",
+          "https://images.unsplash.com/photo-1521369909029-2afed882baee?w=600&h=800&fit=crop"
+        ],
+        price: "2 900 ₽",
+        sizes: ["ONE SIZE"],
+        colors: ["#1a1c1c", "#f9f4eb"],
+        description: "Классическая кепка с вышитым логотипом. Регулируемый размер.",
+        composition: "100% хлопок",
+        care: "Ручная стирка. Не отбеливать."
+      }
+    ];
+
+    let cartCount = 0;
+    let currentDetailImageIndex = 0;
+    let currentDetailProduct = null;
+
+    // Render Products
+    function renderProducts() {
+      const grid = document.getElementById('product-grid');
+      grid.innerHTML = products.map(product => `
+        <div class="product-card" id="card-${product.id}" onclick="openProduct(${product.id})">
+          <div class="product-image-container">
+            <img src="${product.images[0]}" class="product-image" data-index="0" alt="${product.name}">
+            <button class="slider-btn prev" onclick="event.stopPropagation(); changeImage(${product.id}, -1)">←</button>
+            <button class="slider-btn next" onclick="event.stopPropagation(); changeImage(${product.id}, 1)">→</button>
+          </div>
+          <div class="product-name">${product.name}</div>
+        </div>
+      `).join('');
+    }
+
+    // Image Slider for Grid
+    function changeImage(cardId, direction) {
+      const card = document.getElementById(`card-${cardId}`);
+      const img = card.querySelector('.product-image');
+      const product = products.find(p => p.id === cardId);
+      let currentIndex = parseInt(img.dataset.index);
+      
+      currentIndex += direction;
+      if (currentIndex < 0) currentIndex = product.images.length - 1;
+      if (currentIndex >= product.images.length) currentIndex = 0;
+      
+      img.dataset.index = currentIndex;
+      img.src = product.images[currentIndex];
+    }
+
+    // Open Product Detail
+    function openProduct(id) {
+      currentDetailProduct = products.find(p => p.id === id);
+      currentDetailImageIndex = 0;
+      
+      const container = document.getElementById('product-detail-content');
+      container.innerHTML = `
+        <div class="product-detail-images">
+          <img id="detail-main-img" src="${currentDetailProduct.images[0]}" class="product-detail-main-img" alt="${currentDetailProduct.name}">
+          <div style="display:flex; gap:8px; justify-content:center;">
+            <button class="slider-btn prev" onclick="changeDetailImage(-1)">←</button>
+            <button class="slider-btn next" onclick="changeDetailImage(1)">→</button>
+          </div>
+        </div>
+        <div class="product-detail-info">
+          <h2>${currentDetailProduct.name}</h2>
+          <p class="price-tag">${currentDetailProduct.price}</p>
+          
+          <div class="detail-section">
+            <h4>Цвет</h4>
+            <div class="color-selector">
+              ${currentDetailProduct.colors.map((c, i) => `<button class="color-btn ${i===0?'active':''}" style="background:${c}" onclick="selectColor(this)"></button>`).join('')}
+            </div>
+          </div>
+          
+          <div class="detail-section">
+            <h4>Размер</h4>
+            <div class="size-selector">
+              ${currentDetailProduct.sizes.map((s, i) => `<button class="size-btn ${i===0?'active':''}" onclick="selectSize(this)">${s}</button>`).join('')}
+            </div>
+          </div>
+          
+          <div class="detail-section">
+            <h4>Описание</h4>
+            <p>${currentDetailProduct.description}</p>
+          </div>
+          
+          <div class="detail-section">
+            <h4>Состав</h4>
+            <p>${currentDetailProduct.composition}</p>
+          </div>
+          
+          <div class="detail-section">
+            <h4>Правила ухода</h4>
+            <p>${currentDetailProduct.care}</p>
+          </div>
+          
+          <button class="add-to-cart-btn" onclick="updateCart()">В КОРЗИНУ</button>
+        </div>
+      `;
+      
+      document.getElementById('product-modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function changeDetailImage(direction) {
+      currentDetailImageIndex += direction;
+      if (currentDetailImageIndex < 0) currentDetailImageIndex = currentDetailProduct.images.length - 1;
+      if (currentDetailImageIndex >= currentDetailProduct.images.length) currentDetailImageIndex = 0;
+      document.getElementById('detail-main-img').src = currentDetailProduct.images[currentDetailImageIndex];
+    }
+
+    function selectSize(btn) {
+      btn.parentElement.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    function selectColor(btn) {
+      btn.parentElement.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    function updateCart() {
+      cartCount++;
+      // Update cart icon with count badge
+      const cartBtn = document.querySelector('.icon-btn');
+      let badge = cartBtn.querySelector('.cart-badge');
+      if (!badge) {
+        badge = document.createElement('span');
+        badge.className = 'cart-badge';
+        badge.style.cssText = 'position:absolute;top:-4px;right:-4px;background:#f9f4eb;color:#000;font-size:9px;font-family:JetBrains Mono,monospace;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;';
+        cartBtn.style.position = 'relative';
+        cartBtn.appendChild(badge);
+      }
+      badge.innerText = cartCount;
+      
+      // Visual feedback
+      const btn = document.querySelector('.add-to-cart-btn');
+      const originalText = btn.innerText;
+      btn.innerText = "ДОБАВЛЕНО ✓";
+      setTimeout(() => {
+        btn.innerText = originalText;
+      }, 1000);
+    }
+
+    // Modal Management
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function openPage(id) {
+      document.querySelectorAll('.modal-page').forEach(p => p.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      document.body.style.overflow = 'hidden';
+      window.scrollTo(0, 0);
+    }
+
+    function scrollToSection(id) {
+      closeModal('product-modal');
+      closeModal('offer-page');
+      closeModal('privacy-page');
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Hamburger Menu
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const btn = document.getElementById('hamburger-btn');
+      menu.classList.toggle('active');
+      btn.classList.toggle('active');
+      if (menu.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    }
+
+    function closeMenuAndScroll(id) {
+      const menu = document.getElementById('mobile-menu');
+      const btn = document.getElementById('hamburger-btn');
+      menu.classList.remove('active');
+      btn.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+
+    // Initialize
+    renderProducts();
+  </script>
+</body>
+</html>
