@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DEVIANCE — Свобода быть собой</title>
+  <link rel="icon" type="image/jpeg" href="https://i.ibb.co/1f9DknnP/5386445896578438301-121.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -297,7 +298,6 @@
 
     .collection-inner { max-width: 1280px; margin: 0 auto; }
 
-    /* Section head — заметный и красивый в стиле сайта */
     .section-head {
       margin-bottom: var(--spacing-xl);
       padding-bottom: var(--spacing-md);
@@ -336,7 +336,7 @@
       font-weight: 500;
       font-size: 11px;
       letter-spacing: 0.06em;
-      text-transform: uppercase;
+      text-transform: none;
       color: #010101;
       opacity: 0.5;
     }
@@ -699,16 +699,16 @@
     .field input {
       height: 48px;
       padding: 0 16px;
-      background: rgba(24,25,28,0.88);
-      border: 1px solid var(--color-edge-subtle);
+      background: rgba(236,237,239,0.14);
+      border: 1px solid var(--color-edge);
       border-radius: var(--radius);
-      color: var(--color-ink);
+      color: #ffffff;
       font-family: var(--font-display);
       font-size: 15px;
       transition: border-color 0.2s;
     }
-    .field input::placeholder { color: rgba(161,164,165,0.5); }
-    .field input:focus { outline: none; border-color: rgba(236,237,239,0.55); }
+    .field input::placeholder { color: rgba(236,237,239,0.45); }
+    .field input:focus { outline: none; border-color: rgba(236,237,239,0.6); }
     .field input.invalid { border-color: #e05555; }
 
     .field-hint { font-family: var(--font-mono); font-size: 10px; line-height: 16px; color: var(--color-muted); opacity: 0.7; }
@@ -798,10 +798,19 @@
       .header-center img { height: 80px; }
       .hero { height: auto; display: block; }
       .hero-bg { display: none; }
-      .hero-bg-img { display: block; }
+      .hero-bg-img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 1 / 1.5;
+        height: auto;
+        object-fit: cover;
+        object-position: top center;
+      }
       .hero-content { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+      .collection { grid-template-columns: 1fr; padding-bottom: 40px; }
       .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
       .product-name { font-size: 12px; }
+      .about { padding-top: 40px; }
       .about-inner { grid-template-columns: 1fr; }
       .about-images { height: 380px; margin-bottom: var(--spacing-lg); }
       .about-img:nth-child(1) { width: 55%; height: 65%; left: 0; top: 0; }
@@ -891,7 +900,6 @@
   <section id="collection" class="collection">
     <div class="collection-inner">
       <div class="section-head">
-        <span class="section-eyebrow">[ 01 — НОВЫЕ ПОСТУПЛЕНИЯ ]</span>
         <h2 class="section-title">Коллекция <span class="title-count" id="collection-count"></span></h2>
       </div>
       <div class="product-grid" id="product-grid"></div>
@@ -1087,7 +1095,6 @@
           <input type="text" id="f-pvz" placeholder="Код или адрес ПВЗ СДЭК" autocomplete="off" required data-cdek="pvz">
         </div>
 
-        <!-- Готовый контейнер под виджет карты СДЭК -->
         <div class="cdek-widget" id="cdek-widget-container">
           <div class="cdek-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -1292,7 +1299,7 @@
 
     const COLOR_NAMES = { black: 'Чёрный', white: 'Белый', blue: 'Синий' };
 
-    let cart = []; // {key, productId, name, image, size, color, priceNum, priceLabel, qty}
+    let cart = [];
     let currentDetailImageIndex = 0;
     let currentDetailProduct = null;
     let currentDetailColor = null;
@@ -1300,7 +1307,6 @@
     function parsePrice(str) { return parseInt(str.replace(/[^\d]/g, ''), 10); }
     function formatPrice(n) { return n.toLocaleString('ru-RU') + ' ₽'; }
 
-    // Render Products
     function renderProducts() {
       const grid = document.getElementById('product-grid');
       grid.innerHTML = products.map(product => `
@@ -1314,7 +1320,7 @@
           <div class="product-price">${product.price}</div>
         </div>
       `).join('');
-      document.getElementById('collection-count').innerText = '[ ' + products.length + ' ТОВАРОВ ]';
+      document.getElementById('collection-count').innerText = products.length + ' товара';
       document.querySelectorAll('.product-image-container').forEach(container => addSwipeListener(container));
     }
 
@@ -1547,12 +1553,9 @@
       if (digits.startsWith('8')) digits = '7' + digits.slice(1);
       if (!digits.startsWith('7')) digits = '7' + digits;
       digits = digits.slice(0, 11);
-
-      // Разрешаем только мобильные коды 9XX
       if (digits.length > 1 && digits[1] !== '9') {
-        digits = digits[0] + digits.slice(2); // убираем неверный код оператора
+        digits = digits[0] + digits.slice(2);
       }
-
       let out = '+7';
       if (digits.length > 1) out += ' (' + digits.slice(1, 4);
       if (digits.length >= 4) out += ') ' + digits.slice(4, 7);
@@ -1561,7 +1564,6 @@
       this.value = out;
     });
     phoneInput.addEventListener('keydown', function (e) {
-      // Блокируем буквы и спецсимволы (кроме управляющих клавиш)
       if (e.key.length === 1 && !/[0-9+]/.test(e.key)) e.preventDefault();
     });
 
