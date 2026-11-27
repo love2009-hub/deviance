@@ -188,15 +188,17 @@
     .header-center {
       position: absolute;
       left: 50%;
-      transform: translateX(-50%);
-      height: 40px;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      height: 80px;
       display: flex;
       align-items: center;
       justify-content: center;
+      pointer-events: none;
     }
 
     .header-center img {
-      height: 40px;
+      height: 80px;
       width: auto;
       object-fit: contain;
       filter: brightness(0) invert(1);
@@ -348,24 +350,38 @@
       overflow: hidden;
     }
 
+    /* Размытая подложка из того же фото — заполняет поля по краям на ПК */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: -120px;
+      background-image: url('https://i.ibb.co/JjWWg16Q/5208794160746407259-119.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      filter: blur(80px) saturate(1.2) brightness(0.5);
+      transform: scale(1.12);
+      z-index: 0;
+    }
+
+    /* Резкое фото целиком поверх размытия */
     .hero-bg {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url('https://i.ibb.co/GLsmqC0/5208794160746407208-119.jpg');
+      background-image: url('https://i.ibb.co/JjWWg16Q/5208794160746407259-119.jpg');
       background-size: contain;
       background-position: center;
       background-repeat: no-repeat;
-      background-color: #0a0a0a;
-      filter: brightness(0.75) contrast(1.05);
-      z-index: 0;
+      filter: brightness(0.85) contrast(1.05);
+      z-index: 1;
     }
 
     .hero-content {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -1086,11 +1102,16 @@
       }
       
       .header-center img {
-        height: 40px;
+        height: 80px;
       }
       
+      /* Мобилка: фон растягиваем на весь экран — без щелей сверху и снизу */
+      .hero::before {
+        display: none;
+      }
+
       .hero-bg {
-        background-size: contain;
+        background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
       }
@@ -1228,7 +1249,7 @@
       </button>
     </div>
     <div class="header-center">
-      <img src="https://static.tildacdn.pub/tild6638-3161-4262-b333-666166346262/5422820820716821428_.png" alt="Deviance Logo">
+      <img src="https://i.ibb.co/DfzLSxMS/5422820820716821428-121-Photoroom-1.png" alt="Deviance Logo">
     </div>
     <div class="header-right">
       <button class="icon-btn" onclick="alert('Корзина: ' + cartCount + ' товаров')" aria-label="Корзина">
@@ -1686,7 +1707,6 @@
     let currentDetailImageIndex = 0;
     let currentDetailProduct = null;
 
-    // Render Products
     function renderProducts() {
       const grid = document.getElementById('product-grid');
       grid.innerHTML = products.map(product => `
@@ -1701,13 +1721,11 @@
         </div>
       `).join('');
       
-      // Add swipe listeners
       document.querySelectorAll('.product-image-container').forEach(container => {
         addSwipeListener(container);
       });
     }
 
-    // Swipe functionality
     function addSwipeListener(element) {
       let startX = 0;
       let currentX = 0;
@@ -1741,7 +1759,6 @@
       });
     }
 
-    // Image Slider for Grid
     function changeImage(cardId, direction) {
       const card = document.getElementById(`card-${cardId}`);
       const img = card.querySelector('.product-image');
@@ -1756,7 +1773,6 @@
       img.src = product.images[currentIndex];
     }
 
-    // Open Product Detail
     function openProduct(id) {
       currentDetailProduct = products.find(p => p.id === id);
       currentDetailImageIndex = 0;
@@ -1767,17 +1783,12 @@
       document.getElementById('detail-main-img').src = currentDetailProduct.images[0];
       document.getElementById('detail-main-img').alt = currentDetailProduct.name;
       
-      // Composition
       document.getElementById('detail-composition').innerHTML = `<p>${currentDetailProduct.composition}</p><p style="margin-top: 12px;">${currentDetailProduct.description}</p>`;
-      
-      // Care
       document.getElementById('detail-care').innerHTML = `<p>${currentDetailProduct.care}</p>`;
       
-      // Size dropdown
       const sizeDropdown = document.getElementById('size-dropdown');
       sizeDropdown.innerHTML = currentDetailProduct.sizes.map(s => `<option value="${s}">${s}</option>`).join('');
       
-      // Thumbnails
       const thumbnailsContainer = document.getElementById('product-thumbnails');
       thumbnailsContainer.innerHTML = currentDetailProduct.images.map((img, i) => `
         <div class="product-thumbnail ${i === 0 ? 'active' : ''}" onclick="selectThumbnail(${i})">
@@ -1789,7 +1800,6 @@
       document.body.style.overflow = 'hidden';
       window.scrollTo(0, 0);
       
-      // Add swipe to detail image
       const detailImg = document.getElementById('detail-main-img');
       if (detailImg) {
         addSwipeToDetail(detailImg);
@@ -1800,7 +1810,6 @@
       currentDetailImageIndex = index;
       document.getElementById('detail-main-img').src = currentDetailProduct.images[index];
       
-      // Update active thumbnail
       document.querySelectorAll('.product-thumbnail').forEach((thumb, i) => {
         if (i === index) {
           thumb.classList.add('active');
@@ -1853,10 +1862,8 @@
       const item = header.parentElement;
       const isOpen = item.classList.contains('open');
       
-      // Close all
       document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
       
-      // Open clicked if it wasn't open
       if (!isOpen) {
         item.classList.add('open');
       }
@@ -1888,7 +1895,6 @@
       }, 1000);
     }
 
-    // Modal Management
     function closeModal(id) {
       document.getElementById(id).classList.remove('active');
       document.body.style.overflow = '';
@@ -1907,7 +1913,6 @@
       document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Hamburger Menu
     function toggleMenu() {
       const menu = document.getElementById('mobile-menu');
       const btn = document.getElementById('hamburger-btn');
@@ -1931,7 +1936,6 @@
       }, 100);
     }
 
-    // Initialize
     renderProducts();
   </script>
 </body>
