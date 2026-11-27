@@ -726,7 +726,6 @@
     .delivery-note .label { color: var(--color-silver); }
     .delivery-note span { font-size: 14px; color: var(--color-muted); }
 
-    /* CDEK widget placeholder */
     .cdek-widget {
       grid-column: 1 / -1;
       border: 1px dashed var(--color-edge);
@@ -751,7 +750,6 @@
       color: var(--color-silver);
     }
 
-    /* Total + pay */
     .cart-summary {
       grid-column: 1 / -1;
       display: flex;
@@ -861,7 +859,7 @@
       <img src="https://i.ibb.co/DfzLSxMS/5422820820716821428-121-Photoroom-1.png" alt="Deviance Logo">
     </div>
     <div class="header-right">
-      <button class="icon-btn" id="cart-open-btn" onclick="openCart()" aria-label="Корзина">
+      <button class="icon-btn" id="cart-header-btn" onclick="openCart()" aria-label="Корзина">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
           <line x1="3" y1="6" x2="21" y2="6"/>
@@ -957,7 +955,7 @@
   <div id="product-detail-modal" class="product-detail-modal">
     <div class="product-detail-header">
       <button class="back-btn" onclick="closeProductDetail()">← Назад</button>
-      <button class="icon-btn" onclick="openCart()" aria-label="Корзина" style="color: #010101;">
+      <button class="icon-btn" id="cart-modal-btn" onclick="openCart()" aria-label="Корзина" style="color: #010101;">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
           <line x1="3" y1="6" x2="21" y2="6"/>
@@ -1455,7 +1453,7 @@
         });
       }
 
-      updateCartBadge();
+      syncCartBadges();
       renderCart();
 
       const btn = document.querySelector('.add-to-cart-btn');
@@ -1464,19 +1462,45 @@
       setTimeout(() => { btn.innerText = originalText; }, 1000);
     }
 
-    function updateCartBadge() {
+    // Синхронизация бейджей на обеих иконках корзины
+    function syncCartBadges() {
       const totalQty = cart.reduce((s, i) => s + i.qty, 0);
-      const cartBtn = document.getElementById('cart-open-btn');
-      let badge = cartBtn.querySelector('.cart-badge');
-      if (totalQty === 0) { if (badge) badge.remove(); return; }
-      if (!badge) {
-        badge = document.createElement('span');
-        badge.className = 'cart-badge';
-        badge.style.cssText = 'position:absolute;top:-4px;right:-4px;background:#f0f0f0;color:#000;font-size:10px;font-family:JetBrains Mono,monospace;min-width:16px;height:16px;padding:0 3px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:600;';
-        cartBtn.style.position = 'relative';
-        cartBtn.appendChild(badge);
+
+      // Бейдж в шапке (главная страница) — БЕЛЫЙ
+      const headerBtn = document.getElementById('cart-header-btn');
+      if (headerBtn) {
+        let badge = headerBtn.querySelector('.cart-badge');
+        if (totalQty === 0) {
+          if (badge) badge.remove();
+        } else {
+          if (!badge) {
+            badge = document.createElement('span');
+            badge.className = 'cart-badge';
+            badge.style.cssText = 'position:absolute;top:-4px;right:-4px;background:#f0f0f0;color:#000;font-size:10px;font-family:JetBrains Mono,monospace;min-width:16px;height:16px;padding:0 3px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:600;';
+            headerBtn.style.position = 'relative';
+            headerBtn.appendChild(badge);
+          }
+          badge.innerText = totalQty;
+        }
       }
-      badge.innerText = totalQty;
+
+      // Бейдж в модалке товара (страница товара) — ЧЁРНЫЙ
+      const modalBtn = document.getElementById('cart-modal-btn');
+      if (modalBtn) {
+        let badge = modalBtn.querySelector('.cart-badge');
+        if (totalQty === 0) {
+          if (badge) badge.remove();
+        } else {
+          if (!badge) {
+            badge = document.createElement('span');
+            badge.className = 'cart-badge';
+            badge.style.cssText = 'position:absolute;top:-4px;right:-4px;background:#000000;color:#ffffff;font-size:10px;font-family:JetBrains Mono,monospace;min-width:16px;height:16px;padding:0 3px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:600;';
+            modalBtn.style.position = 'relative';
+            modalBtn.appendChild(badge);
+          }
+          badge.innerText = totalQty;
+        }
+      }
     }
 
     function cartTotal() { return cart.reduce((s, i) => s + i.priceNum * i.qty, 0); }
@@ -1522,13 +1546,13 @@
     function changeQty(idx, delta) {
       cart[idx].qty += delta;
       if (cart[idx].qty <= 0) cart.splice(idx, 1);
-      updateCartBadge();
+      syncCartBadges();
       renderCart();
     }
 
     function removeItem(idx) {
       cart.splice(idx, 1);
-      updateCartBadge();
+      syncCartBadges();
       renderCart();
     }
 
