@@ -41,15 +41,8 @@
       --radius-demo: 24px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
       background-color: var(--color-canvas);
@@ -59,87 +52,6 @@
       font-size: 18px;
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
-    }
-
-    .display {
-      font-family: var(--font-serif);
-      font-weight: 400;
-      font-size: clamp(64px, 8vw, 96px);
-      line-height: 1;
-      letter-spacing: -0.01em;
-    }
-
-    .display-secondary {
-      font-family: var(--font-serif);
-      font-weight: 400;
-      font-size: clamp(48px, 6vw, 76.8px);
-      line-height: 1;
-      letter-spacing: -0.01em;
-    }
-
-    .heading {
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-size: clamp(40px, 5vw, 56px);
-      line-height: 1.2;
-      letter-spacing: -0.05em;
-    }
-
-    .heading-compact {
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-size: 36px;
-      line-height: 1.3;
-      letter-spacing: -0.05em;
-    }
-
-    .body-text {
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-size: 18px;
-      line-height: 1.5;
-    }
-
-    .body-small {
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    .action-text {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 16px;
-      line-height: 1.5;
-    }
-
-    .action-small {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 14px;
-      line-height: 20px;
-    }
-
-    .navigation-text {
-      font-family: var(--font-display);
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 20px;
-    }
-
-    .link-text {
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 20px;
-    }
-
-    .caption {
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-size: 12px;
-      line-height: 16px;
     }
 
     .label {
@@ -179,11 +91,7 @@
       border: 1px solid var(--color-edge-subtle);
     }
 
-    .header-left, .header-right {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-sm);
-    }
+    .header-left, .header-right { display: flex; align-items: center; gap: var(--spacing-sm); }
 
     .header-center {
       position: absolute;
@@ -217,16 +125,9 @@
       transition: all 0.15s cubic-bezier(.4, 0, .2, 1);
     }
 
-    .icon-btn:hover {
-      color: var(--color-ink);
-    }
+    .icon-btn:hover { color: var(--color-ink); }
+    .icon-btn svg { width: 20px; height: 20px; }
 
-    .icon-btn svg {
-      width: 20px;
-      height: 20px;
-    }
-
-    /* Hamburger */
     .hamburger {
       width: 32px;
       height: 32px;
@@ -249,25 +150,15 @@
       transition: all 0.3s cubic-bezier(.4, 0, .2, 1);
     }
 
-    .hamburger.active span:nth-child(1) {
-      transform: translateY(6.5px) rotate(45deg);
-    }
-
-    .hamburger.active span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .hamburger.active span:nth-child(3) {
-      transform: translateY(-6.5px) rotate(-45deg);
-    }
+    .hamburger.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
     /* Mobile Menu */
     .mobile-menu {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background: rgba(0, 0, 0, 0.97);
       backdrop-filter: blur(12px);
       z-index: 150;
@@ -281,17 +172,12 @@
       transition: opacity 0.3s ease;
     }
 
-    .mobile-menu.active {
-      opacity: 1;
-      pointer-events: all;
-    }
+    .mobile-menu.active { opacity: 1; pointer-events: all; }
 
     .mobile-menu-close {
       position: absolute;
-      top: 24px;
-      right: 24px;
-      width: 44px;
-      height: 44px;
+      top: 24px; right: 24px;
+      width: 44px; height: 44px;
       background: transparent;
       border: 1px solid var(--color-edge-subtle);
       border-radius: var(--radius-action);
@@ -303,15 +189,8 @@
       transition: all 0.2s;
     }
 
-    .mobile-menu-close:hover {
-      background: rgba(255,255,255,0.05);
-      color: var(--color-ink);
-    }
-
-    .mobile-menu-close svg {
-      width: 20px;
-      height: 20px;
-    }
+    .mobile-menu-close:hover { background: rgba(255,255,255,0.05); color: var(--color-ink); }
+    .mobile-menu-close svg { width: 20px; height: 20px; }
 
     .mobile-menu a, .mobile-menu button:not(.mobile-menu-close) {
       color: var(--color-ink);
@@ -330,14 +209,8 @@
       gap: var(--spacing-md);
     }
 
-    .mobile-menu a:hover, .mobile-menu button:not(.mobile-menu-close):hover {
-      opacity: 0.7;
-    }
-
-    .mobile-menu .tg-link {
-      font-size: 24px;
-      opacity: 0.7;
-    }
+    .mobile-menu a:hover, .mobile-menu button:not(.mobile-menu-close):hover { opacity: 0.7; }
+    .mobile-menu .tg-link { font-size: 24px; opacity: 0.7; }
 
     /* Hero */
     .hero {
@@ -348,40 +221,36 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
+      background: #000000;
     }
 
-    /* Размытая подложка из того же фото — заполняет поля по краям на ПК */
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: -120px;
-      background-image: url('https://i.ibb.co/JjWWg16Q/5208794160746407259-119.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      filter: blur(80px) saturate(1.2) brightness(0.5);
-      transform: scale(1.12);
-      z-index: 0;
-    }
-
-    /* Резкое фото целиком поверх размытия */
     .hero-bg {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('https://i.ibb.co/JjWWg16Q/5208794160746407259-119.jpg');
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: url('https://i.ibb.co/GvVXm7HW/5208794160746407259-119-Photoroom.png');
       background-size: contain;
       background-position: center;
       background-repeat: no-repeat;
-      filter: brightness(0.85) contrast(1.05);
+      filter: brightness(0.92) saturate(0.95);
       z-index: 1;
+    }
+
+    .hero-bg-img { display: none; width: 100%; height: auto; filter: brightness(0.92) saturate(0.95); }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.07);
+      z-index: 2;
+      pointer-events: none;
     }
 
     .hero-content {
       position: relative;
-      z-index: 2;
+      z-index: 3;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -426,15 +295,50 @@
       color: #010101;
     }
 
-    .collection-inner {
-      max-width: 1280px;
-      margin: 0 auto;
+    .collection-inner { max-width: 1280px; margin: 0 auto; }
+
+    /* Section head — заметный и красивый в стиле сайта */
+    .section-head {
+      margin-bottom: var(--spacing-xl);
+      padding-bottom: var(--spacing-md);
+      border-bottom: 1px solid var(--color-light-rule);
     }
 
-    .collection .section-label {
+    .section-eyebrow {
+      font-family: var(--font-mono);
+      font-weight: 500;
+      font-size: 10px;
+      line-height: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
       color: #010101;
-      opacity: 0.7;
-      margin-bottom: var(--spacing-md);
+      opacity: 0.55;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: clamp(40px, 5vw, 64px);
+      line-height: 1;
+      letter-spacing: -0.01em;
+      color: #010101;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .section-title .title-count {
+      font-family: var(--font-mono);
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #010101;
+      opacity: 0.5;
     }
 
     .product-grid {
@@ -451,9 +355,7 @@
       padding: var(--spacing-xs);
     }
 
-    .product-card:hover {
-      border-color: var(--color-light-rule);
-    }
+    .product-card:hover { border-color: var(--color-light-rule); }
 
     .product-image-container {
       position: relative;
@@ -467,8 +369,7 @@
     }
 
     .product-image {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       object-fit: cover;
       transition: opacity 0.3s;
       user-select: none;
@@ -482,8 +383,7 @@
       background: rgba(255,255,255,0.9);
       color: #010101;
       border: 1px solid var(--color-light-rule);
-      width: 34px;
-      height: 34px;
+      width: 34px; height: 34px;
       border-radius: var(--radius);
       cursor: pointer;
       display: flex;
@@ -495,210 +395,40 @@
       z-index: 2;
     }
 
-    .slider-btn:hover {
-      background: #010101;
-      color: var(--color-cream);
-    }
-
+    .slider-btn:hover { background: #010101; color: var(--color-cream); }
     .slider-btn.prev { left: 8px; }
     .slider-btn.next { right: 8px; }
 
-    .product-name {
-      font-family: var(--font-display);
-      font-size: 14px;
-      line-height: 1.6;
-      padding: 0 4px;
-      color: #010101;
-    }
-
-    .product-price {
-      font-family: var(--font-display);
-      font-weight: 500;
-      font-size: 15px;
-      line-height: 1.4;
-      padding: 4px 4px 0;
-      color: #010101;
-      letter-spacing: -0.01em;
-    }
+    .product-name { font-family: var(--font-display); font-size: 14px; line-height: 1.6; padding: 0 4px; color: #010101; }
+    .product-price { font-family: var(--font-display); font-weight: 500; font-size: 15px; line-height: 1.4; padding: 4px 4px 0; color: #010101; letter-spacing: -0.01em; }
 
     /* About */
-    .about {
-      padding: var(--spacing-xxxl) var(--spacing-md);
-      width: 100%;
-      background: var(--color-cream);
-      color: #010101;
-    }
-
-    .about-inner {
-      max-width: 1280px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: var(--spacing-lg);
-      align-items: center;
-    }
-
-    .about-images {
-      position: relative;
-      height: 600px;
-      width: 100%;
-    }
-
-    .about-img {
-      position: absolute;
-      border-radius: var(--radius);
-      object-fit: cover;
-      border: none;
-      background: var(--color-canvas);
-    }
-
-    .about-img:nth-child(1) {
-      width: 48%;
-      height: 62%;
-      top: 0;
-      left: 0;
-      z-index: 1;
-    }
-
-    .about-img:nth-child(2) {
-      width: 35%;
-      height: 42%;
-      top: 0;
-      left: 49%;
-      z-index: 2;
-    }
-
-    .about-img:nth-child(3) {
-      width: 45%;
-      height: 50%;
-      bottom: 0;
-      left: 28%;
-      z-index: 3;
-    }
-
-    .about-text h2 {
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-size: clamp(40px, 5vw, 56px);
-      line-height: 1.15;
-      letter-spacing: -0.05em;
-      margin-bottom: var(--spacing-md);
-      color: #010101;
-    }
-
-    .about-text p {
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-size: 22px;
-      line-height: 1.3;
-      opacity: 0.9;
-      max-width: 520px;
-      color: #010101;
-      letter-spacing: -0.01em;
-    }
+    .about { padding: var(--spacing-xxxl) var(--spacing-md); width: 100%; background: var(--color-cream); color: #010101; }
+    .about-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--spacing-lg); align-items: center; }
+    .about-images { position: relative; height: 600px; width: 100%; }
+    .about-img { position: absolute; border-radius: var(--radius); object-fit: cover; border: none; background: var(--color-canvas); }
+    .about-img:nth-child(1) { width: 48%; height: 62%; top: 0; left: 0; z-index: 1; }
+    .about-img:nth-child(2) { width: 35%; height: 42%; top: 0; left: 49%; z-index: 2; }
+    .about-img:nth-child(3) { width: 45%; height: 50%; bottom: 0; left: 28%; z-index: 3; }
+    .about-text h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(40px, 5vw, 56px); line-height: 1.15; letter-spacing: -0.05em; margin-bottom: var(--spacing-md); color: #010101; }
+    .about-text p { font-family: var(--font-display); font-weight: 400; font-size: 22px; line-height: 1.3; opacity: 0.9; max-width: 520px; color: #010101; letter-spacing: -0.01em; }
 
     /* Contacts */
-    .contacts {
-      padding: var(--spacing-xxxl) var(--spacing-md) 40px;
-      max-width: 1280px;
-      margin: 0 auto;
-    }
-
-    .contacts-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--spacing-lg);
-      align-items: start;
-      padding: var(--spacing-xxl) var(--spacing-lg);
-      border-top: 1px solid var(--color-edge-subtle);
-      border-bottom: 1px solid var(--color-edge-subtle);
-    }
-
-    .contacts-heading h2 {
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-size: clamp(40px, 6vw, 56px);
-      line-height: 1.2;
-      letter-spacing: -0.05em;
-      margin-bottom: var(--spacing-sm);
-    }
-
-    .contacts-heading p {
-      font-family: var(--font-display);
-      font-size: 18px;
-      line-height: 1.5;
-      color: var(--color-muted);
-      max-width: 400px;
-    }
-
-    .contacts-links {
-      display: flex;
-      flex-direction: column;
-      gap: var(--spacing-sm);
-      align-items: flex-end;
-      text-align: right;
-    }
-
-    .contact-item {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .contact-label {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      line-height: 18px;
-      text-transform: uppercase;
-      letter-spacing: -0.02em;
-      color: var(--color-muted);
-    }
-
-    .contact-link {
-      color: var(--color-link);
-      text-decoration: none;
-      font-family: var(--font-display);
-      font-size: 18px;
-      line-height: 1.5;
-      transition: color 0.15s cubic-bezier(.4, 0, .2, 1);
-    }
-
-    .contact-link:hover {
-      color: var(--color-ink);
-    }
+    .contacts { padding: var(--spacing-xxxl) var(--spacing-md) 40px; max-width: 1280px; margin: 0 auto; }
+    .contacts-inner { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-lg); align-items: start; padding: var(--spacing-xxl) var(--spacing-lg); border-top: 1px solid var(--color-edge-subtle); border-bottom: 1px solid var(--color-edge-subtle); }
+    .contacts-heading h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(40px, 6vw, 56px); line-height: 1.2; letter-spacing: -0.05em; margin-bottom: var(--spacing-sm); }
+    .contacts-heading p { font-family: var(--font-display); font-size: 18px; line-height: 1.5; color: var(--color-muted); max-width: 400px; }
+    .contacts-links { display: flex; flex-direction: column; gap: var(--spacing-sm); align-items: flex-end; text-align: right; }
+    .contact-item { display: flex; flex-direction: column; gap: 4px; }
+    .contact-label { font-family: var(--font-mono); font-size: 10px; line-height: 18px; text-transform: uppercase; letter-spacing: -0.02em; color: var(--color-muted); }
+    .contact-link { color: var(--color-link); text-decoration: none; font-family: var(--font-display); font-size: 18px; line-height: 1.5; transition: color 0.15s cubic-bezier(.4, 0, .2, 1); }
+    .contact-link:hover { color: var(--color-ink); }
 
     /* Footer */
-    .footer {
-      border-top: 1px solid var(--color-edge-subtle);
-      padding: var(--spacing-footer) var(--spacing-md);
-      text-align: center;
-    }
-
-    .footer-content {
-      max-width: 1280px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: var(--spacing-sm);
-      align-items: center;
-    }
-
-    .footer-brand {
-      font-family: var(--font-serif);
-      font-weight: 400;
-      font-size: 24px;
-      line-height: 1;
-      letter-spacing: -0.01em;
-      color: var(--color-ink);
-    }
-
-    .footer-links {
-      display: flex;
-      gap: var(--spacing-xs);
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
+    .footer { border-top: 1px solid var(--color-edge-subtle); padding: var(--spacing-footer) var(--spacing-md); text-align: center; }
+    .footer-content { max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; gap: var(--spacing-sm); align-items: center; }
+    .footer-brand { font-family: var(--font-serif); font-weight: 400; font-size: 24px; line-height: 1; letter-spacing: -0.01em; color: var(--color-ink); }
+    .footer-links { display: flex; gap: var(--spacing-xs); flex-wrap: wrap; justify-content: center; }
     .footer-btn {
       background: transparent;
       border: 1px solid var(--color-edge-subtle);
@@ -716,29 +446,20 @@
       align-items: center;
       justify-content: center;
     }
-
-    .footer-btn:hover {
-      background-color: color-mix(in oklab, #fff 90%, transparent);
-      color: #000;
-    }
+    .footer-btn:hover { background-color: color-mix(in oklab, #fff 90%, transparent); color: #000; }
 
     /* Modals */
     .modal-page {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background: var(--color-canvas);
       z-index: 200;
       overflow-y: auto;
       display: none;
       padding: var(--spacing-md);
     }
-
-    .modal-page.active {
-      display: block;
-    }
+    .modal-page.active { display: block; }
 
     .back-btn {
       display: inline-flex;
@@ -758,69 +479,26 @@
       margin-bottom: var(--spacing-lg);
       transition: all 0.2s cubic-bezier(.4, 0, .2, 1);
     }
+    .back-btn:hover { background-color: color-mix(in oklab, #fff 90%, transparent); color: #000; }
 
-    .back-btn:hover {
-      background-color: color-mix(in oklab, #fff 90%, transparent);
-      color: #000;
-    }
-
-    .legal-text {
-      max-width: 1024px;
-      margin: 0 auto;
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 1.6;
-      color: var(--color-muted);
-      padding-bottom: var(--spacing-xxxxl);
-    }
-
-    .legal-text h3 {
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-size: 36px;
-      line-height: 1.3;
-      letter-spacing: -0.05em;
-      margin-top: var(--spacing-xxl);
-      margin-bottom: var(--spacing-md);
-      color: var(--color-ink);
-    }
-
-    .legal-text h2 {
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-size: 36px;
-      line-height: 1.3;
-      letter-spacing: -0.05em;
-      margin-bottom: var(--spacing-lg);
-      color: var(--color-ink);
-    }
-
-    .legal-text p {
-      margin-bottom: var(--spacing-sm);
-    }
-
-    .legal-text strong {
-      color: var(--color-ink);
-    }
+    .legal-text { max-width: 1024px; margin: 0 auto; font-family: var(--font-display); font-weight: 400; font-size: 14px; line-height: 1.6; color: var(--color-muted); padding-bottom: var(--spacing-xxxxl); }
+    .legal-text h3 { font-family: var(--font-display); font-weight: 400; font-size: 36px; line-height: 1.3; letter-spacing: -0.05em; margin-top: var(--spacing-xxl); margin-bottom: var(--spacing-md); color: var(--color-ink); }
+    .legal-text h2 { font-family: var(--font-display); font-weight: 400; font-size: 36px; line-height: 1.3; letter-spacing: -0.05em; margin-bottom: var(--spacing-lg); color: var(--color-ink); }
+    .legal-text p { margin-bottom: var(--spacing-sm); }
+    .legal-text strong { color: var(--color-ink); }
 
     /* Product Detail Modal */
     .product-detail-modal {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background: var(--color-cream);
       color: #010101;
       z-index: 200;
       overflow-y: auto;
       display: none;
     }
-
-    .product-detail-modal.active {
-      display: block;
-    }
+    .product-detail-modal.active { display: block; }
 
     .product-detail-header {
       position: sticky;
@@ -833,136 +511,28 @@
       border-bottom: 1px solid var(--color-light-rule);
       z-index: 10;
     }
+    .product-detail-header .back-btn { margin-bottom: 0; border-color: var(--color-light-rule); color: #010101; height: 40px; padding: 0 16px; font-size: 14px; }
 
-    .product-detail-header .back-btn {
-      margin-bottom: 0;
-      border-color: var(--color-light-rule);
-      color: #010101;
-      height: 40px;
-      padding: 0 16px;
-      font-size: 14px;
-    }
+    .product-detail-body { max-width: 1024px; margin: 0 auto; padding: var(--spacing-md); }
 
-    .product-detail-body {
-      max-width: 1024px;
-      margin: 0 auto;
-      padding: var(--spacing-md);
-    }
+    .product-main-image { width: 100%; aspect-ratio: 3/4; background: #e0dcd4; border-radius: var(--radius); overflow: hidden; margin-bottom: var(--spacing-sm); position: relative; }
+    .product-main-image img { width: 100%; height: 100%; object-fit: cover; }
+    .product-main-image .slider-btn { background: rgba(255,255,255,0.95); color: #010101; border: 1px solid var(--color-light-rule); }
+    .product-main-image .slider-btn:hover { background: #010101; color: var(--color-cream); }
 
-    .product-main-image {
-      width: 100%;
-      aspect-ratio: 3/4;
-      background: #e0dcd4;
-      border-radius: var(--radius);
-      overflow: hidden;
-      margin-bottom: var(--spacing-sm);
-      position: relative;
-    }
+    .product-thumbnails { display: flex; gap: var(--spacing-xs); overflow-x: auto; padding-bottom: var(--spacing-sm); margin-bottom: var(--spacing-md); scrollbar-width: thin; scrollbar-color: #010101 transparent; }
+    .product-thumbnails::-webkit-scrollbar { height: 4px; }
+    .product-thumbnails::-webkit-scrollbar-thumb { background: #010101; border-radius: 2px; }
+    .product-thumbnail { flex-shrink: 0; width: 80px; height: 80px; border-radius: var(--radius); overflow: hidden; cursor: pointer; border: 2px solid transparent; transition: border-color 0.2s; background: #e0dcd4; }
+    .product-thumbnail.active { border-color: #010101; }
+    .product-thumbnail img { width: 100%; height: 100%; object-fit: cover; }
 
-    .product-main-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .product-main-image .slider-btn {
-      background: rgba(255,255,255,0.95);
-      color: #010101;
-      border: 1px solid var(--color-light-rule);
-    }
-
-    .product-main-image .slider-btn:hover {
-      background: #010101;
-      color: var(--color-cream);
-    }
-
-    .product-thumbnails {
-      display: flex;
-      gap: var(--spacing-xs);
-      overflow-x: auto;
-      padding-bottom: var(--spacing-sm);
-      margin-bottom: var(--spacing-md);
-      scrollbar-width: thin;
-      scrollbar-color: #010101 transparent;
-    }
-
-    .product-thumbnails::-webkit-scrollbar {
-      height: 4px;
-    }
-
-    .product-thumbnails::-webkit-scrollbar-thumb {
-      background: #010101;
-      border-radius: 2px;
-    }
-
-    .product-thumbnail {
-      flex-shrink: 0;
-      width: 80px;
-      height: 80px;
-      border-radius: var(--radius);
-      overflow: hidden;
-      cursor: pointer;
-      border: 2px solid transparent;
-      transition: border-color 0.2s;
-      background: #e0dcd4;
-    }
-
-    .product-thumbnail.active {
-      border-color: #010101;
-    }
-
-    .product-thumbnail img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .product-info h2 {
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-size: clamp(24px, 4vw, 32px);
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-      margin-bottom: var(--spacing-xs);
-      color: #010101;
-      text-transform: uppercase;
-    }
-
-    .product-price-display {
-      display: flex;
-      align-items: baseline;
-      gap: var(--spacing-sm);
-      margin-bottom: var(--spacing-lg);
-      margin-top: var(--spacing-sm);
-    }
-
-    .product-price-current {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: clamp(24px, 4vw, 32px);
-      color: #010101;
-      letter-spacing: -0.02em;
-    }
-
-    .product-price-old {
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-size: clamp(18px, 3vw, 24px);
-      color: var(--color-muted);
-      text-decoration: line-through;
-    }
-
-    .product-size-section {
-      margin-bottom: var(--spacing-lg);
-    }
-
-    .product-size-label {
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-size: 16px;
-      margin-bottom: var(--spacing-xs);
-      color: #010101;
-    }
+    .product-info h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(24px, 4vw, 32px); line-height: 1.2; letter-spacing: -0.02em; margin-bottom: var(--spacing-xs); color: #010101; text-transform: uppercase; }
+    .product-price-display { display: flex; align-items: baseline; gap: var(--spacing-sm); margin-bottom: var(--spacing-lg); margin-top: var(--spacing-sm); }
+    .product-price-current { font-family: var(--font-display); font-weight: 600; font-size: clamp(24px, 4vw, 32px); color: #010101; letter-spacing: -0.02em; }
+    .product-price-old { font-family: var(--font-display); font-weight: 400; font-size: clamp(18px, 3vw, 24px); color: var(--color-muted); text-decoration: line-through; }
+    .product-size-section { margin-bottom: var(--spacing-lg); }
+    .product-size-label { font-family: var(--font-display); font-weight: 400; font-size: 16px; margin-bottom: var(--spacing-xs); color: #010101; }
 
     .size-dropdown {
       width: 100%;
@@ -981,11 +551,17 @@
       background-repeat: no-repeat;
       background-position: right 16px center;
     }
+    .size-dropdown:focus { outline: none; border-color: #010101; }
 
-    .size-dropdown:focus {
-      outline: none;
-      border-color: #010101;
-    }
+    .product-color-section { margin-bottom: var(--spacing-lg); }
+    .color-selector { display: flex; gap: var(--spacing-xs); margin-top: var(--spacing-xs); }
+    .color-option { width: 40px; height: 40px; border-radius: var(--radius); border: 2px solid transparent; cursor: pointer; transition: border-color 0.2s; position: relative; }
+    .color-option.active { border-color: #010101; }
+    .color-option:hover { border-color: #010101; }
+    .color-option[data-color="black"] { background: #1a1c1c; }
+    .color-option[data-color="white"] { background: #f9f4eb; border: 1px solid var(--color-light-rule); }
+    .color-option[data-color="white"].active { border-color: #010101; }
+    .color-option[data-color="blue"] { background: #2b3a55; }
 
     .add-to-cart-btn {
       width: 100%;
@@ -1003,20 +579,11 @@
       margin-bottom: var(--spacing-xl);
       transition: opacity 0.2s;
     }
-
-    .add-to-cart-btn:hover {
-      opacity: 0.85;
-    }
+    .add-to-cart-btn:hover { opacity: 0.85; }
 
     /* Accordion */
-    .accordion {
-      border-top: 1px solid var(--color-light-rule);
-    }
-
-    .accordion-item {
-      border-bottom: 1px solid var(--color-light-rule);
-    }
-
+    .accordion { border-top: 1px solid var(--color-light-rule); }
+    .accordion-item { border-bottom: 1px solid var(--color-light-rule); }
     .accordion-header {
       width: 100%;
       display: flex;
@@ -1032,208 +599,243 @@
       color: #010101;
       text-align: left;
     }
+    .accordion-header .accordion-icon { font-size: 24px; font-weight: 300; color: var(--color-muted); transition: transform 0.3s; flex-shrink: 0; margin-left: var(--spacing-sm); }
+    .accordion-item.open .accordion-icon { transform: rotate(45deg); }
+    .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .accordion-item.open .accordion-content { max-height: 500px; }
+    .accordion-content-inner { padding-bottom: var(--spacing-md); font-family: var(--font-display); font-size: 15px; line-height: 1.6; color: #010101; opacity: 0.85; }
+    .accordion-content-inner p { margin-bottom: var(--spacing-xs); }
+    .accordion-content-inner ul { list-style: none; padding: 0; }
+    .accordion-content-inner ul li { padding: 6px 0; border-bottom: 1px solid var(--color-light-faint); display: flex; justify-content: space-between; }
+    .accordion-content-inner ul li:last-child { border-bottom: none; }
+    .accordion-content-inner ul li span:first-child { color: #010101; font-weight: 500; }
+    .accordion-content-inner ul li span:last-child { color: var(--color-muted); }
 
-    .accordion-header .accordion-icon {
-      font-size: 24px;
-      font-weight: 300;
+    /* ============ CART PAGE ============ */
+    .cart-page {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: var(--color-canvas);
+      z-index: 200;
+      overflow-y: auto;
+      display: none;
+      padding: var(--spacing-md);
+    }
+    .cart-page.active { display: block; }
+
+    .cart-inner { max-width: 1024px; margin: 0 auto; }
+
+    .cart-title {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: clamp(40px, 5vw, 64px);
+      line-height: 1;
+      letter-spacing: -0.01em;
+      color: var(--color-ink);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .cart-empty {
+      text-align: center;
+      padding: var(--spacing-xxxxl) 0;
       color: var(--color-muted);
-      transition: transform 0.3s;
-      flex-shrink: 0;
-      margin-left: var(--spacing-sm);
+      font-size: 18px;
+    }
+    .cart-empty .label { display: block; margin-bottom: 16px; color: var(--color-muted); }
+
+    .cart-items { display: flex; flex-direction: column; margin-bottom: var(--spacing-xl); }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 88px 1fr auto;
+      gap: var(--spacing-md);
+      align-items: center;
+      padding: var(--spacing-md) 0;
+      border-top: 1px solid var(--color-edge-subtle);
+    }
+    .cart-item:last-child { border-bottom: 1px solid var(--color-edge-subtle); }
+
+    .cart-item-img { width: 88px; height: 110px; object-fit: cover; border-radius: var(--radius); background: #2a2c2c; }
+
+    .cart-item-info h4 { font-family: var(--font-display); font-weight: 500; font-size: 16px; color: var(--color-ink); margin-bottom: 6px; text-transform: uppercase; letter-spacing: -0.01em; }
+    .cart-item-meta { font-family: var(--font-mono); font-size: 11px; line-height: 18px; color: var(--color-muted); text-transform: uppercase; letter-spacing: -0.02em; }
+    .cart-item-meta .dot { margin: 0 6px; opacity: 0.5; }
+
+    .cart-item-right { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+    .cart-item-price { font-family: var(--font-display); font-weight: 600; font-size: 16px; color: var(--color-ink); }
+
+    .qty-controls { display: flex; align-items: center; gap: 4px; border: 1px solid var(--color-edge-subtle); border-radius: var(--radius); padding: 2px; }
+    .qty-btn { width: 28px; height: 28px; background: transparent; border: none; color: var(--color-silver); cursor: pointer; font-family: var(--font-mono); font-size: 14px; border-radius: 3px; transition: all 0.15s; }
+    .qty-btn:hover { background: rgba(255,255,255,0.08); color: var(--color-ink); }
+    .qty-num { min-width: 24px; text-align: center; font-family: var(--font-mono); font-size: 13px; color: var(--color-ink); }
+
+    .cart-item-remove { background: transparent; border: none; color: var(--color-muted); cursor: pointer; font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; padding: 4px 0; transition: color 0.15s; }
+    .cart-item-remove:hover { color: #e05555; }
+
+    /* Checkout form */
+    .checkout { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-lg) var(--spacing-md); }
+
+    .checkout-section-title {
+      grid-column: 1 / -1;
+      font-family: var(--font-mono);
+      font-weight: 500;
+      font-size: 10px;
+      line-height: 18px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-muted);
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--color-edge-subtle);
+      margin-top: var(--spacing-md);
     }
 
-    .accordion-item.open .accordion-icon {
-      transform: rotate(45deg);
-    }
+    .field { display: flex; flex-direction: column; gap: 8px; }
+    .field.full { grid-column: 1 / -1; }
 
-    .accordion-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-    }
+    .field label { font-family: var(--font-mono); font-size: 10px; line-height: 18px; text-transform: uppercase; letter-spacing: -0.02em; color: var(--color-muted); }
+    .field label .req { color: var(--color-ink); margin-left: 4px; }
 
-    .accordion-item.open .accordion-content {
-      max-height: 500px;
-    }
-
-    .accordion-content-inner {
-      padding-bottom: var(--spacing-md);
+    .field input {
+      height: 48px;
+      padding: 0 16px;
+      background: rgba(24,25,28,0.88);
+      border: 1px solid var(--color-edge-subtle);
+      border-radius: var(--radius);
+      color: var(--color-ink);
       font-family: var(--font-display);
       font-size: 15px;
-      line-height: 1.6;
-      color: #010101;
-      opacity: 0.85;
+      transition: border-color 0.2s;
     }
+    .field input::placeholder { color: rgba(161,164,165,0.5); }
+    .field input:focus { outline: none; border-color: rgba(236,237,239,0.55); }
+    .field input.invalid { border-color: #e05555; }
 
-    .accordion-content-inner p {
-      margin-bottom: var(--spacing-xs);
-    }
+    .field-hint { font-family: var(--font-mono); font-size: 10px; line-height: 16px; color: var(--color-muted); opacity: 0.7; }
 
-    .accordion-content-inner ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .accordion-content-inner ul li {
-      padding: 6px 0;
-      border-bottom: 1px solid var(--color-light-faint);
+    .delivery-note {
+      grid-column: 1 / -1;
       display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px;
+      border: 1px solid var(--color-edge-subtle);
+      border-radius: var(--radius);
+      background: rgba(24,25,28,0.5);
+    }
+    .delivery-note .label { color: var(--color-silver); }
+    .delivery-note span { font-size: 14px; color: var(--color-muted); }
+
+    /* CDEK widget placeholder */
+    .cdek-widget {
+      grid-column: 1 / -1;
+      border: 1px dashed var(--color-edge);
+      border-radius: var(--radius-demo);
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: linear-gradient(#111111 0%, rgba(0,0,0,0.5) 100%);
+      padding: var(--spacing-lg);
+      text-align: center;
+    }
+    .cdek-widget .label { color: var(--color-silver); }
+    .cdek-widget p { font-size: 14px; color: var(--color-muted); max-width: 420px; }
+    .cdek-widget .cdek-icon {
+      width: 44px; height: 44px;
+      border-radius: var(--radius);
+      border: 1px solid var(--color-edge-subtle);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--color-silver);
+    }
+
+    /* Total + pay */
+    .cart-summary {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
       justify-content: space-between;
+      padding: var(--spacing-md) 0;
+      border-top: 1px solid var(--color-edge);
+      margin-top: var(--spacing-md);
     }
+    .cart-summary .total-label { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-muted); }
+    .cart-summary .total-value { font-family: var(--font-display); font-weight: 600; font-size: 28px; color: var(--color-ink); letter-spacing: -0.02em; }
 
-    .accordion-content-inner ul li:last-child {
-      border-bottom: none;
+    .pay-btn {
+      grid-column: 1 / -1;
+      height: 56px;
+      background: var(--color-cream);
+      color: #000000;
+      border: none;
+      border-radius: var(--radius-action);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(.4, 0, .2, 1);
+      box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.1), 0px 1px 2px -1px rgba(0,0,0,0.1);
     }
+    .pay-btn:hover { background: #ffffff; transform: translateY(-1px); }
+    .pay-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 
-    .accordion-content-inner ul li span:first-child {
-      color: #010101;
-      font-weight: 500;
+    .form-error {
+      grid-column: 1 / -1;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: #e05555;
+      display: none;
     }
-
-    .accordion-content-inner ul li span:last-child {
-      color: var(--color-muted);
-    }
+    .form-error.show { display: block; }
 
     /* Responsive */
     @media (max-width: 768px) {
-      .header {
-        width: calc(100% - 32px);
-        padding: 0 12px;
-      }
-      
-      .header-center img {
-        height: 80px;
-      }
-      
-      /* Мобилка: фон растягиваем на весь экран — без щелей сверху и снизу */
-      .hero::before {
-        display: none;
-      }
-
-      .hero-bg {
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-      }
-      
-      .product-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-      }
-      
-      .product-name {
-        font-size: 12px;
-      }
-      
-      .about-inner {
-        grid-template-columns: 1fr;
-      }
-      
-      .about-images {
-        height: 380px;
-        margin-bottom: var(--spacing-lg);
-      }
-      
+      .header { width: calc(100% - 32px); padding: 0 12px; }
+      .header-center img { height: 80px; }
+      .hero { height: auto; display: block; }
+      .hero-bg { display: none; }
+      .hero-bg-img { display: block; }
+      .hero-content { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+      .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .product-name { font-size: 12px; }
+      .about-inner { grid-template-columns: 1fr; }
+      .about-images { height: 380px; margin-bottom: var(--spacing-lg); }
       .about-img:nth-child(1) { width: 55%; height: 65%; left: 0; top: 0; }
       .about-img:nth-child(2) { width: 42%; height: 40%; left: 57%; top: 15%; }
       .about-img:nth-child(3) { width: 50%; height: 48%; left: 25%; bottom: 0; }
-      
-      .about-text h2 {
-        font-size: clamp(32px, 8vw, 44px);
-        line-height: 1.1;
-        margin-bottom: var(--spacing-sm);
-      }
-      
-      .about-text p {
-        font-size: 17px;
-        line-height: 1.35;
-        max-width: 100%;
-      }
-      
-      .contacts-inner {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-xl);
-        padding: var(--spacing-xl) 0;
-      }
-      
-      .contacts-links {
-        align-items: flex-start;
-        text-align: left;
-      }
-      
-      .contacts {
-        padding: var(--spacing-xxl) var(--spacing-sm) 24px;
-      }
-      
-      .mobile-menu a, .mobile-menu button:not(.mobile-menu-close) {
-        font-size: 36px;
-      }
-
-      .product-detail-body {
-        padding: var(--spacing-sm);
-      }
-
-      .product-main-image {
-        aspect-ratio: 3/4;
-        margin-bottom: var(--spacing-sm);
-      }
-
-      .product-thumbnail {
-        width: 70px;
-        height: 70px;
-      }
+      .about-text h2 { font-size: clamp(32px, 8vw, 44px); line-height: 1.1; margin-bottom: var(--spacing-sm); }
+      .about-text p { font-size: 17px; line-height: 1.35; max-width: 100%; }
+      .contacts-inner { grid-template-columns: 1fr; gap: var(--spacing-xl); padding: var(--spacing-xl) 0; }
+      .contacts-links { align-items: flex-start; text-align: left; }
+      .contacts { padding: var(--spacing-xxl) var(--spacing-sm) 24px; }
+      .mobile-menu a, .mobile-menu button:not(.mobile-menu-close) { font-size: 36px; }
+      .product-detail-body { padding: var(--spacing-sm); }
+      .product-main-image { aspect-ratio: 3/4; margin-bottom: var(--spacing-sm); }
+      .product-thumbnail { width: 70px; height: 70px; }
+      .checkout { grid-template-columns: 1fr; }
+      .cart-item { grid-template-columns: 64px 1fr; }
+      .cart-item-img { width: 64px; height: 80px; }
+      .cart-item-right { grid-column: 1 / -1; flex-direction: row; justify-content: space-between; align-items: center; }
     }
 
     @media (max-width: 480px) {
-      .product-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-      }
-      
-      .product-card {
-        padding: 4px;
-      }
-      
-      .slider-btn {
-        width: 28px;
-        height: 28px;
-        font-size: 12px;
-      }
-
-      .product-detail-header {
-        padding: var(--spacing-xs) var(--spacing-sm);
-      }
-
-      .product-detail-body {
-        padding: var(--spacing-sm);
-      }
-
-      .product-thumbnail {
-        width: 64px;
-        height: 64px;
-      }
-
-      .add-to-cart-btn {
-        height: 52px;
-      }
+      .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .product-card { padding: 4px; }
+      .slider-btn { width: 28px; height: 28px; font-size: 12px; }
+      .product-detail-header { padding: var(--spacing-xs) var(--spacing-sm); }
+      .product-detail-body { padding: var(--spacing-sm); }
+      .product-thumbnail { width: 64px; height: 64px; }
+      .add-to-cart-btn { height: 52px; }
     }
 
     @media (min-width: 769px) {
-      .product-detail-layout {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: var(--spacing-lg);
-        align-items: start;
-      }
-
-      .product-detail-left {
-        position: sticky;
-        top: 80px;
-      }
-
-      .product-detail-right {
-        padding-top: var(--spacing-sm);
-      }
+      .product-detail-layout { display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-lg); align-items: start; }
+      .product-detail-left { position: sticky; top: 80px; }
+      .product-detail-right { padding-top: var(--spacing-sm); }
     }
   </style>
 </head>
@@ -1243,16 +845,14 @@
   <header class="header">
     <div class="header-left">
       <button class="hamburger" id="hamburger-btn" onclick="toggleMenu()">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
     </div>
     <div class="header-center">
       <img src="https://i.ibb.co/DfzLSxMS/5422820820716821428-121-Photoroom-1.png" alt="Deviance Logo">
     </div>
     <div class="header-right">
-      <button class="icon-btn" onclick="alert('Корзина: ' + cartCount + ' товаров')" aria-label="Корзина">
+      <button class="icon-btn" id="cart-open-btn" onclick="openCart()" aria-label="Корзина">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
           <line x1="3" y1="6" x2="21" y2="6"/>
@@ -1266,8 +866,7 @@
   <div class="mobile-menu" id="mobile-menu">
     <button class="mobile-menu-close" onclick="toggleMenu()" aria-label="Закрыть меню">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="18" y1="6" x2="6" y2="18"/>
-        <line x1="6" y1="6" x2="18" y2="18"/>
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
       </svg>
     </button>
     <button onclick="closeMenuAndScroll('hero')">Главная</button>
@@ -1282,6 +881,7 @@
   <!-- Hero -->
   <section id="hero" class="hero">
     <div class="hero-bg"></div>
+    <img class="hero-bg-img" src="https://i.ibb.co/GvVXm7HW/5208794160746407259-119-Photoroom.png" alt="DEVIANCE">
     <div class="hero-content">
       <button class="hero-cta" onclick="scrollToSection('collection')">Перейти к каталогу</button>
     </div>
@@ -1290,10 +890,11 @@
   <!-- Collection -->
   <section id="collection" class="collection">
     <div class="collection-inner">
-      <div class="label section-label">[ КОЛЛЕКЦИЯ ]</div>
-      <div class="product-grid" id="product-grid">
-        <!-- Products injected via JS -->
+      <div class="section-head">
+        <span class="section-eyebrow">[ 01 — НОВЫЕ ПОСТУПЛЕНИЯ ]</span>
+        <h2 class="section-title">Коллекция <span class="title-count" id="collection-count"></span></h2>
       </div>
+      <div class="product-grid" id="product-grid"></div>
     </div>
   </section>
 
@@ -1348,7 +949,7 @@
   <div id="product-detail-modal" class="product-detail-modal">
     <div class="product-detail-header">
       <button class="back-btn" onclick="closeProductDetail()">← Назад</button>
-      <button class="icon-btn" onclick="alert('Корзина: ' + cartCount + ' товаров')" aria-label="Корзина" style="color: #010101;">
+      <button class="icon-btn" onclick="openCart()" aria-label="Корзина" style="color: #010101;">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
           <line x1="3" y1="6" x2="21" y2="6"/>
@@ -1364,9 +965,7 @@
             <button class="slider-btn prev" onclick="changeDetailImage(-1)">←</button>
             <button class="slider-btn next" onclick="changeDetailImage(1)">→</button>
           </div>
-          <div class="product-thumbnails" id="product-thumbnails">
-            <!-- Thumbnails injected via JS -->
-          </div>
+          <div class="product-thumbnails" id="product-thumbnails"></div>
         </div>
         <div class="product-detail-right">
           <div class="product-info">
@@ -1375,41 +974,31 @@
               <span class="product-price-current" id="detail-price-current"></span>
               <span class="product-price-old" id="detail-price-old"></span>
             </div>
-            
             <div class="product-size-section">
               <div class="product-size-label">Размер</div>
-              <select class="size-dropdown" id="size-dropdown">
-                <!-- Options injected via JS -->
-              </select>
+              <select class="size-dropdown" id="size-dropdown"></select>
             </div>
-
+            <div class="product-color-section">
+              <div class="product-size-label">Цвет</div>
+              <div class="color-selector" id="color-selector"></div>
+            </div>
             <button class="add-to-cart-btn" onclick="updateCart()">В корзину</button>
-
             <div class="accordion">
               <div class="accordion-item">
                 <button class="accordion-header" onclick="toggleAccordion(this)">
-                  <span>Характеристики</span>
-                  <span class="accordion-icon">+</span>
+                  <span>Характеристики</span><span class="accordion-icon">+</span>
                 </button>
-                <div class="accordion-content">
-                  <div class="accordion-content-inner" id="detail-composition">
-                  </div>
-                </div>
+                <div class="accordion-content"><div class="accordion-content-inner" id="detail-composition"></div></div>
               </div>
               <div class="accordion-item">
                 <button class="accordion-header" onclick="toggleAccordion(this)">
-                  <span>Уход за изделием</span>
-                  <span class="accordion-icon">+</span>
+                  <span>Уход за изделием</span><span class="accordion-icon">+</span>
                 </button>
-                <div class="accordion-content">
-                  <div class="accordion-content-inner" id="detail-care">
-                  </div>
-                </div>
+                <div class="accordion-content"><div class="accordion-content-inner" id="detail-care"></div></div>
               </div>
               <div class="accordion-item">
                 <button class="accordion-header" onclick="toggleAccordion(this)">
-                  <span>Размерная таблица</span>
-                  <span class="accordion-icon">+</span>
+                  <span>Размерная таблица</span><span class="accordion-icon">+</span>
                 </button>
                 <div class="accordion-content">
                   <div class="accordion-content-inner">
@@ -1425,12 +1014,11 @@
               </div>
               <div class="accordion-item">
                 <button class="accordion-header" onclick="toggleAccordion(this)">
-                  <span>Доставка</span>
-                  <span class="accordion-icon">+</span>
+                  <span>Доставка</span><span class="accordion-icon">+</span>
                 </button>
                 <div class="accordion-content">
                   <div class="accordion-content-inner">
-                    <p>Доставка осуществляется службами СДЭК и Почта России по всей территории России.</p>
+                    <p>Доставка осуществляется службой СДЭК по всей территории России.</p>
                     <p>Срок доставки: 3–14 рабочих дней в зависимости от региона.</p>
                     <p>Стоимость доставки рассчитывается отдельно при оформлении заказа.</p>
                     <p>Бесплатная доставка при заказе от 10 000 ₽.</p>
@@ -1444,6 +1032,86 @@
     </div>
   </div>
 
+  <!-- ============ CART PAGE ============ -->
+  <div id="cart-page" class="cart-page">
+    <div class="cart-inner">
+      <button class="back-btn" onclick="closeCart()">← Назад в каталог</button>
+      <h2 class="cart-title">Корзина</h2>
+
+      <div id="cart-empty-state" class="cart-empty" style="display:none;">
+        <span class="label">[ ПУСТО ]</span>
+        Здесь пока ничего нет. Выбери что-нибудь в коллекции.
+      </div>
+
+      <div class="cart-items" id="cart-items"></div>
+
+      <form class="checkout" id="checkout-form" onsubmit="return submitOrder(event)" novalidate>
+        <div class="checkout-section-title">[ Контакты ]</div>
+
+        <div class="field">
+          <label for="f-email">Email<span class="req">*</span></label>
+          <input type="email" id="f-email" placeholder="you@example.com" autocomplete="email" required>
+        </div>
+
+        <div class="field">
+          <label for="f-phone">Номер телефона<span class="req">*</span></label>
+          <input type="tel" id="f-phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" inputmode="numeric" required>
+          <span class="field-hint">Только существующие мобильные номера РФ</span>
+        </div>
+
+        <div class="field full">
+          <label for="f-name">ФИО<span class="req">*</span></label>
+          <input type="text" id="f-name" placeholder="Фамилия Имя Отчество" autocomplete="name" required>
+        </div>
+
+        <div class="field full">
+          <label for="f-tg">@username в Telegram</label>
+          <input type="text" id="f-tg" placeholder="@nickname" autocomplete="off">
+          <span class="field-hint">Необязательно — для быстрой связи</span>
+        </div>
+
+        <div class="checkout-section-title">[ Доставка — только СДЭК ]</div>
+
+        <div class="delivery-note">
+          <span class="label">СДЭК</span>
+          <span>Доставка осуществляется исключительно службой СДЭК. Выбери пункт получения на карте ниже или укажи его вручную.</span>
+        </div>
+
+        <div class="field">
+          <label for="f-city">Город<span class="req">*</span></label>
+          <input type="text" id="f-city" placeholder="Например: Москва" autocomplete="address-level2" required data-cdek="city">
+        </div>
+
+        <div class="field">
+          <label for="f-pvz">Пункт получения<span class="req">*</span></label>
+          <input type="text" id="f-pvz" placeholder="Код или адрес ПВЗ СДЭК" autocomplete="off" required data-cdek="pvz">
+        </div>
+
+        <!-- Готовый контейнер под виджет карты СДЭК -->
+        <div class="cdek-widget" id="cdek-widget-container">
+          <div class="cdek-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <span class="label">Карта пунктов выдачи СДЭК</span>
+          <p>Виджет будет интегрирован сюда. После подключения карты выбор ПВЗ автоматически подставится в поле «Пункт получения».</p>
+        </div>
+
+        <div class="form-error" id="form-error"></div>
+
+        <div class="cart-summary">
+          <span class="total-label">Итого</span>
+          <span class="total-value" id="cart-total">0 ₽</span>
+        </div>
+
+        <button type="submit" class="pay-btn" id="pay-btn">Оплатить</button>
+        <span class="field-hint" style="grid-column:1/-1; text-align:center;">Оплата проходит через ЮKassa · после подтверждения чек придёт на email</span>
+      </form>
+    </div>
+  </div>
+
   <!-- Offer Page -->
   <div id="offer-page" class="modal-page">
     <button class="back-btn" onclick="closeModal('offer-page')">← Назад</button>
@@ -1451,18 +1119,15 @@
       <h2>Публичная оферта (договор купли-продажи товара)</h2>
       <p>Настоящий документ является официальным предложением (публичной офертой) Самозанятого Разживина Ярослава Игоревича (далее — «Продавец») заключить договор розничной купли-продажи Товара дистанционным способом на условиях, изложенных ниже.</p>
       <p>В соответствии с пунктом 2 статьи 437 Гражданского кодекса Российской Федерации (ГК РФ), в случае принятия изложенных ниже условий и оплаты товара, физическое лицо, производящее акцепт этой оферты, становится «Покупателем».</p>
-      
       <h3>1. Термины и определения</h3>
       <p><strong>Продавец</strong> — физическое лицо, зарегистрированное в установленном законом порядке и применяющее специальный налоговый режим «Налог на профессиональный доход» (самозанятый).<br>
       <strong>Покупатель</strong> — дееспособное физическое лицо, имеющее намерение заказать или приобрести Товары исключительно для личных, семейных, домашних и иных нужд, не связанных с осуществлением предпринимательской деятельности.<br>
       <strong>Сайт</strong> — интернет-сайт, расположенный в сети Интернет по адресу: https://hello-deviance.tilda.ws.<br>
       <strong>Товар</strong> — одежда и аксессуары собственного производства Продавца, представленные к продаже на Сайте.<br>
       <strong>Акцепт оферты</strong> — полное и безоговорочное принятие условий настоящей оферты Покупателем путем совершения действий, указанных в разделе 3 настоящей Оферты.</p>
-
       <h3>2. Предмет договора</h3>
       <p>2.1. Продавец обязуется передать в собственность Покупателя Товар, выбранный и оплаченный Покупателем на Сайте, а Покупатель обязуется принять и оплатить этот Товар на условиях настоящего Договора.<br>
       2.2. Продавец гарантирует, что все предлагаемые к продаже Товары изготовлены им лично (являются продукцией собственного производства), не обременены правами третьих лиц, не находятся в залоге и под арестом.</p>
-
       <h3>3. Порядок заключения договора (Акцепт оферты)</h3>
       <p>3.1. Ознакомление Покупателя с текстом настоящей Оферты осуществляется при оформлении заказа на Сайте.<br>
       3.2. Акцептом (принятием) настоящей оферты является совершение Покупателем в совокупности следующих действий:<br>
@@ -1470,28 +1135,23 @@
       — Простановка галочки (чекбокса) «Я принимаю условия Публичной оферты».<br>
       — Стопроцентная (100%) предоплата стоимости Товара.<br>
       3.3. С момента совершения Покупателем указанных действий договор купли-продажи считается заключенным в электронном виде и не требует подписания на бумаге.</p>
-
       <h3>4. Стоимость товара и порядок расчетов</h3>
       <p>4.1. Цены на Товар определяются Продавцом в одностороннем порядке и указываются на страницах Сайта в рублях РФ.<br>
       4.2. Расчеты между Сторонами осуществляются в безналичной форме в порядке 100% предоплаты через платежный модуль, интегрированный на Сайте.<br>
       4.3. Обязательство Покупателя по оплате считается исполненным с момента зачисления денежных средств на счет Продавца (или обслуживающего Продавца платежного агрегатора).<br>
       4.4. После подтверждения оплаты Продавец формирует чек в приложении ФНС «Мой налог» и обязуется направить его Покупателю в электронном виде на указанный при оформлении заказа email-адрес или номер телефона.</p>
-
       <h3>5. Доставка Товара</h3>
       <p>5.1. Доставка Товара Покупателю осуществляется силами привлеченных служб доставки (СДЭК, Почта России) по выбору Покупателя из доступных вариантов на Сайте.<br>
       5.2. Стоимость доставки не входит в стоимость Товара и рассчитывается отдельно при оформлении заказа.<br>
       5.3. Сроки доставки зависят от региона и регламентов работы службы доставки. Продавец не несет ответственности за задержки в доставке, возникшие по вине транспортных компаний после передачи им Товара.<br>
       5.4. Право собственности на Товар и риск его случайной гибели переходят к Покупателю в момент передачи Товара Покупателю или лицу, указанному в качестве получателя.</p>
-
       <h3>6. Возврат и обмен Товара</h3>
       <p>6.1. Покупатель вправе отказаться от Товара надлежащего качества в любое время до его передачи, а после передачи — в течение 7 дней.<br>
       6.2. Возврат Товара надлежащего качества возможен в случае, если сохранены его товарный вид, фабричные ярлыки, потребительские свойства, а также документ, подтверждающий факт и условия покупки (электронный чек). На одежде не должно быть следов носки, стирки или загрязнений.<br>
       6.3. В соответствии со ст. 26.1 Закона РФ «О защите прав потребителей», Покупатель не вправе отказаться от Товара надлежащего качества, имеющего индивидуально-определенные свойства (например, одежда, сшитая по индивидуальным меркам Покупателя под заказ), если указанный Товар может быть использован исключительно приобретающим его Покупателем.<br>
       6.4. При отказе Покупателя от Товара Продавец возвращает ему стоимость Товара, за исключением расходов Продавца на доставку от Покупателя возвращенного товара, не позднее чем через 10 дней со дня предъявления Покупателем соответствующего требования и возврата Товара.</p>
-
       <h3>7. Персональные данные</h3>
       <p>7.1. Оформляя заказ на Сайте, Покупатель дает свое согласие Продавцу на сбор, обработку и хранение своих персональных данных (ФИО, адрес доставки, телефон, email) в целях исполнения обязательств по настоящему Договору в соответствии с Федеральным законом № 152-ФЗ «О персональных данных».</p>
-
       <h3>8. Реквизиты Продавца</h3>
       <p>
         <strong>Продавец:</strong><br>
@@ -1517,12 +1177,10 @@
     <button class="back-btn" onclick="closeModal('privacy-page')">← Назад</button>
     <div class="legal-text">
       <h2>Политика в отношении обработки персональных данных</h2>
-      
       <h3>1. Общие положения</h3>
       <p>Настоящая политика обработки персональных данных составлена в соответствии с требованиями Федерального закона от 27.07.2006. № 152-ФЗ «О персональных данных» (далее — Закон о персональных данных) и определяет порядок обработки персональных данных и меры по обеспечению безопасности персональных данных, предпринимаемые Разживин Ярослав Игоревич (далее — Оператор).</p>
       <p>1.1. Оператор ставит своей важнейшей целью и условием осуществления своей деятельности соблюдение прав и свобод человека и гражданина при обработке его персональных данных, в том числе защиты прав на неприкосновенность частной жизни, личную и семейную тайну.</p>
       <p>1.2. Настоящая политика Оператора в отношении обработки персональных данных (далее — Политика) применяется ко всей информации, которую Оператор может получить о посетителях веб-сайта https://deviance.ru.</p>
-
       <h3>2. Основные понятия, используемые в Политике</h3>
       <p>2.1. Автоматизированная обработка персональных данных — обработка персональных данных с помощью средств вычислительной техники.</p>
       <p>2.2. Блокирование персональных данных — временное прекращение обработки персональных данных (за исключением случаев, если обработка необходима для уточнения персональных данных).</p>
@@ -1538,67 +1196,30 @@
       <p>2.12. Распространение персональных данных — любые действия, направленные на раскрытие персональных данных неопределенному кругу лиц (передача персональных данных) или на ознакомление с персональными данными неограниченного круга лиц, в том числе обнародование персональных данных в средствах массовой информации, размещение в информационно-телекоммуникационных сетях или предоставление доступа к персональным данным каким-либо иным способом.</p>
       <p>2.13. Трансграничная передача персональных данных — передача персональных данных на территорию иностранного государства органу власти иностранного государства, иностранному физическому или иностранному юридическому лицу.</p>
       <p>2.14. Уничтожение персональных данных — любые действия, в результате которых персональные данные уничтожаются безвозвратно с невозможностью дальнейшего восстановления содержания персональных данных в информационной системе персональных данных и/или уничтожаются материальные носители персональных данных.</p>
-
       <h3>3. Основные права и обязанности Оператора</h3>
       <p>3.1. Оператор имеет право: получать от субъекта персональных данных достоверные информацию и/или документы, содержащие персональные данные; в случае отзыва субъектом персональных данных согласия на обработку персональных данных, а также, направления обращения с требованием о прекращении обработки персональных данных, Оператор вправе продолжить обработку персональных данных без согласия субъекта персональных данных при наличии оснований, указанных в Законе о персональных данных; самостоятельно определять состав и перечень мер, необходимых и достаточных для обеспечения выполнения обязанностей, предусмотренных Законом о персональных данных и принятыми в соответствии с ним нормативными правовыми актами, если иное не предусмотрено Законом о персональных данных или другими федеральными законами.</p>
       <p>3.2. Оператор обязан: предоставлять субъекту персональных данных по его просьбе информацию, касающуюся обработки его персональных данных; организовывать обработку персональных данных в порядке, установленном действующим законодательством РФ; отвечать на обращения и запросы субъектов персональных данных и их законных представителей в соответствии с требованиями Закона о персональных данных; сообщать в уполномоченный орган по защите прав субъектов персональных данных по запросу этого органа необходимую информацию в течение 10 дней с даты получения такого запроса; публиковать или иным образом обеспечивать неограниченный доступ к настоящей Политике в отношении обработки персональных данных; принимать правовые, организационные и технические меры для защиты персональных данных от неправомерного или случайного доступа к ним, уничтожения, изменения, блокирования, копирования, предоставления, распространения персональных данных, а также от иных неправомерных действий в отношении персональных данных; прекратить передачу (распространение, предоставление, доступ) персональных данных, прекратить обработку и уничтожить персональные данные в порядке и случаях, предусмотренных Законом о персональных данных; исполнять иные обязанности, предусмотренные Законом о персональных данных.</p>
-
       <h3>4. Основные права и обязанности субъектов персональных данных</h3>
       <p>4.1. Субъекты персональных данных имеют право: получать информацию, касающуюся обработки его персональных данных, за исключением случаев, предусмотренных федеральными законами; требовать от оператора уточнения его персональных данных, их блокирования или уничтожения в случае, если персональные данные являются неполными, устаревшими, неточными, незаконно полученными или не являются необходимыми для заявленной цели обработки; выдвигать условие предварительного согласия при обработке персональных данных в целях продвижения на рынке товаров, работ и услуг; на отзыв согласия на обработку персональных данных, а также, на направление требования о прекращении обработки персональных данных; обжаловать в уполномоченный орган по защите прав субъектов персональных данных или в судебном порядке неправомерные действия или бездействие Оператора при обработке его персональных данных; на осуществление иных прав, предусмотренных законодательством РФ.</p>
       <p>4.2. Субъекты персональных данных обязаны: предоставлять Оператору достоверные данные о себе; сообщать Оператору об уточнении (обновлении, изменении) своих персональных данных.</p>
       <p>4.3. Лица, передавшие Оператору недостоверные сведения о себе, либо сведения о другом субъекте персональных данных без согласия последнего, несут ответственность в соответствии с законодательством РФ.</p>
-
       <h3>5. Принципы обработки персональных данных</h3>
-      <p>5.1. Обработка персональных данных осуществляется на законной и справедливой основе.<br>
-      5.2. Обработка персональных данных ограничивается достижением конкретных, заранее определенных и законных целей.<br>
-      5.3. Не допускается объединение баз данных, содержащих персональные данные, обработка которых осуществляется в целях, несовместимых между собой.<br>
-      5.4. Обработке подлежат только персональные данные, которые отвечают целям их обработки.<br>
-      5.5. Содержание и объем обрабатываемых персональных данных соответствуют заявленным целям обработки.<br>
-      5.6. При обработке персональных данных обеспечивается точность персональных данных, их достаточность, а в необходимых случаях и актуальность по отношению к целям обработки персональных данных.<br>
-      5.7. Хранение персональных данных осуществляется в форме, позволяющей определить субъекта персональных данных, не дольше, чем этого требуют цели обработки персональных данных.</p>
-
+      <p>5.1. Обработка персональных данных осуществляется на законной и справедливой основе.<br>5.2. Обработка персональных данных ограничивается достижением конкретных, заранее определенных и законных целей.<br>5.3. Не допускается объединение баз данных, содержащих персональные данные, обработка которых осуществляется в целях, несовместимых между собой.<br>5.4. Обработке подлежат только персональные данные, которые отвечают целям их обработки.<br>5.5. Содержание и объем обрабатываемых персональных данных соответствуют заявленным целям обработки.<br>5.6. При обработке персональных данных обеспечивается точность персональных данных, их достаточность, а в необходимых случаях и актуальность по отношению к целям обработки персональных данных.<br>5.7. Хранение персональных данных осуществляется в форме, позволяющей определить субъекта персональных данных, не дольше, чем этого требуют цели обработки персональных данных.</p>
       <h3>6. Цели обработки персональных данных</h3>
-      <p>Цель обработки: информирование пользователя посредством отправки электронных писем.<br>
-      Персональные данные: фамилия, имя, отчество; электронный адрес; номера телефонов; год, месяц, дата и место рождения.<br>
-      Правовые основания: уставные (учредительные) документы Оператора; договоры, заключаемые между оператором и субъектом персональных данных.<br>
-      Вид обработки персональных данных: Сбор, запись, систематизация, накопление, хранение, уничтожение и обезличивание персональных данных; Отправка информационных писем на адрес электронной почты.</p>
-
+      <p>Цель обработки: информирование пользователя посредством отправки электронных писем.<br>Персональные данные: фамилия, имя, отчество; электронный адрес; номера телефонов; год, месяц, дата и место рождения.<br>Правовые основания: уставные (учредительные) документы Оператора; договоры, заключаемые между оператором и субъектом персональных данных.<br>Вид обработки персональных данных: Сбор, запись, систематизация, накопление, хранение, уничтожение и обезличивание персональных данных; Отправка информационных писем на адрес электронной почты.</p>
       <h3>7. Условия обработки персональных данных</h3>
-      <p>7.1. Обработка персональных данных осуществляется с согласия субъекта персональных данных на обработку его персональных данных.<br>
-      7.2. Обработка персональных данных необходима для достижения целей, предусмотренных международным договором Российской Федерации или законом.<br>
-      7.3. Обработка персональных данных необходима для осуществления правосудия, исполнения судебного акта.<br>
-      7.4. Обработка персональных данных необходима для исполнения договора, стороной которого либо выгодоприобретателем или поручителем по которому является субъект персональных данных.<br>
-      7.5. Обработка персональных данных необходима для осуществления прав и законных интересов оператора или третьих лиц.<br>
-      7.6. Осуществляется обработка персональных данных, доступ неограниченного круга лиц к которым предоставлен субъектом персональных данных.<br>
-      7.7. Осуществляется обработка персональных данных, подлежащих опубликованию или обязательному раскрытию в соответствии с федеральным законом.</p>
-
+      <p>7.1. Обработка персональных данных осуществляется с согласия субъекта персональных данных на обработку его персональных данных.<br>7.2. Обработка персональных данных необходима для достижения целей, предусмотренных международным договором Российской Федерации или законом.<br>7.3. Обработка персональных данных необходима для осуществления правосудия, исполнения судебного акта.<br>7.4. Обработка персональных данных необходима для исполнения договора, стороной которого либо выгодоприобретателем или поручителем по которому является субъект персональных данных.<br>7.5. Обработка персональных данных необходима для осуществления прав и законных интересов оператора или третьих лиц.<br>7.6. Осуществляется обработка персональных данных, доступ неограниченного круга лиц к которым предоставлен субъектом персональных данных.<br>7.7. Осуществляется обработка персональных данных, подлежащих опубликованию или обязательному раскрытию в соответствии с федеральным законом.</p>
       <h3>8. Порядок сбора, хранения, передачи и других видов обработки персональных данных</h3>
       <p>Безопасность персональных данных, которые обрабатываются Оператором, обеспечивается путем реализации правовых, организационных и технических мер.</p>
-      <p>8.1. Оператор обеспечивает сохранность персональных данных и принимает все возможные меры, исключающие доступ к персональным данным неуполномоченных лиц.<br>
-      8.2. Персональные данные Пользователя никогда, ни при каких условиях не будут переданы третьим лицам, за исключением случаев, связанных с исполнением действующего законодательства.<br>
-      8.3. В случае выявления неточностей в персональных данных, Пользователь может актуализировать их самостоятельно, путем направления Оператору уведомление на адрес электронной почты Оператора helloo.deviance@gmail.com с пометкой «Актуализация персональных данных».<br>
-      8.4. Срок обработки персональных данных определяется достижением целей, для которых были собраны персональные данные. Пользователь может в любой момент отозвать свое согласие на обработку персональных данных, направив Оператору уведомление посредством электронной почты на электронный адрес Оператора helloo.deviance@gmail.com с пометкой «Отзыв согласия на обработку персональных данных».<br>
-      8.5. Вся информация, которая собирается сторонними сервисами, хранится и обрабатывается указанными лицами в соответствии с их Пользовательским соглашением.<br>
-      8.6. Установленные субъектом персональных данных запреты на передачу не действуют в случаях обработки персональных данных в государственных, общественных и иных публичных интересах.<br>
-      8.7. Оператор при обработке персональных данных обеспечивает конфиденциальность персональных данных.<br>
-      8.8. Оператор осуществляет хранение персональных данных в форме, позволяющей определить субъекта персональных данных, не дольше, чем этого требуют цели обработки.<br>
-      8.9. Условием прекращения обработки персональных данных может являться достижение целей обработки, истечение срока действия согласия, отзыв согласия или выявление неправомерной обработки.</p>
-
+      <p>8.1. Оператор обеспечивает сохранность персональных данных и принимает все возможные меры, исключающие доступ к персональным данным неуполномоченных лиц.<br>8.2. Персональные данные Пользователя никогда, ни при каких условиях не будут переданы третьим лицам, за исключением случаев, связанных с исполнением действующего законодательства.<br>8.3. В случае выявления неточностей в персональных данных, Пользователь может актуализировать их самостоятельно, путем направления Оператору уведомление на адрес электронной почты Оператора helloo.deviance@gmail.com с пометкой «Актуализация персональных данных».<br>8.4. Срок обработки персональных данных определяется достижением целей, для которых были собраны персональные данные. Пользователь может в любой момент отозвать свое согласие на обработку персональных данных, направив Оператору уведомление посредством электронной почты на электронный адрес Оператора helloo.deviance@gmail.com с пометкой «Отзыв согласия на обработку персональных данных».<br>8.5. Вся информация, которая собирается сторонними сервисами, хранится и обрабатывается указанными лицами в соответствии с их Пользовательским соглашением.<br>8.6. Установленные субъектом персональных данных запреты на передачу не действуют в случаях обработки персональных данных в государственных, общественных и иных публичных интересах.<br>8.7. Оператор при обработке персональных данных обеспечивает конфиденциальность персональных данных.<br>8.8. Оператор осуществляет хранение персональных данных в форме, позволяющей определить субъекта персональных данных, не дольше, чем этого требуют цели обработки.<br>8.9. Условием прекращения обработки персональных данных может являться достижение целей обработки, истечение срока действия согласия, отзыв согласия или выявление неправомерной обработки.</p>
       <h3>9. Перечень действий, производимых Оператором с полученными персональными данными</h3>
-      <p>9.1. Оператор осуществляет сбор, запись, систематизацию, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, передачу, обезличивание, блокирование, удаление и уничтожение персональных данных.<br>
-      9.2. Оператор осуществляет автоматизированную обработку персональных данных с получением и/или передачей полученной информации по информационно-телекоммуникационным сетям или без таковой.</p>
-
+      <p>9.1. Оператор осуществляет сбор, запись, систематизацию, накопление, хранение, уточнение (обновление, изменение), извлечение, использование, передачу, обезличивание, блокирование, удаление и уничтожение персональных данных.<br>9.2. Оператор осуществляет автоматизированную обработку персональных данных с получением и/или передачей полученной информации по информационно-телекоммуникационным сетям или без таковой.</p>
       <h3>10. Трансграничная передача персональных данных</h3>
-      <p>10.1. Оператор до начала осуществления деятельности по трансграничной передаче персональных данных обязан уведомить уполномоченный орган по защите прав субъектов персональных данных.<br>
-      10.2. Оператор до подачи вышеуказанного уведомления, обязан получить от органов власти иностранного государства соответствующие сведения.</p>
-
+      <p>10.1. Оператор до начала осуществления деятельности по трансграничной передаче персональных данных обязан уведомить уполномоченный орган по защите прав субъектов персональных данных.<br>10.2. Оператор до подачи вышеуказанного уведомления, обязан получить от органов власти иностранного государства соответствующие сведения.</p>
       <h3>11. Конфиденциальность персональных данных</h3>
       <p>Оператор и иные лица, получившие доступ к персональным данным, обязаны не раскрывать третьим лицам и не распространять персональные данные без согласия субъекта персональных данных, если иное не предусмотрено федеральным законом.</p>
-
       <h3>12. Заключительные положения</h3>
-      <p>12.1. Пользователь может получить любые разъяснения по интересующим вопросам, касающимся обработки его персональных данных, обратившись к Оператору с помощью электронной почты helloo.deviance@gmail.com.<br>
-      12.2. В данном документе будут отражены любые изменения политики обработки персональных данных Оператором. Политика действует бессрочно до замены ее новой версией.<br>
-      12.3. Актуальная версия Политики в свободном доступе расположена в сети Интернет.</p>
+      <p>12.1. Пользователь может получить любые разъяснения по интересующим вопросам, касающимся обработки его персональных данных, обратившись к Оператору с помощью электронной почты helloo.deviance@gmail.com.<br>12.2. В данном документе будут отражены любые изменения политики обработки персональных данных Оператором. Политика действует бессрочно до замены ее новой версией.<br>12.3. Актуальная версия Политики в свободном доступе расположена в сети Интернет.</p>
     </div>
   </div>
 
@@ -1607,106 +1228,79 @@
     const products = [
       {
         id: 1,
-        name: "ФУТБОЛКА OVERSIZE «СВОБОДА»",
+        name: "ФУТБОЛКА «WILDMAN»",
         images: [
-          "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&h=800&fit=crop",
-          "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=600&h=800&fit=crop",
-          "https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=600&h=800&fit=crop"
+          "https://i.ibb.co/cXx9HW1y/5327884515713686419-119.jpg",
+          "https://i.ibb.co/LXCpMfj6/5330107560721324526-121.jpg",
+          "https://i.ibb.co/RkjmR7tG/5332742609056766505-121.jpg"
         ],
-        price: "4 500 ₽",
-        oldPrice: "5 500 ₽",
-        sizes: ["XS", "S", "M", "L", "XL"],
-        colors: ["#1a1c1c", "#f9f4eb", "#8b0000"],
-        description: "Базовая футболка оверсайз кроя из плотного хлопка. Идеальная основа для любого образа, сохраняющая форму после множества стирок.",
-        composition: "100% хлопок, плотность 240 г/м²",
-        care: "Стирка при 30°C. Не отбеливать. Гладить при низкой температуре с изнаночной стороны."
+        price: "3 900 ₽",
+        oldPrice: "4 900 ₽",
+        sizes: ["2XS", "XS", "S", "M", "L", "XL", "2XL"],
+        colors: ["black", "white"],
+        description: "Оверсайз-футболка из кулирки: мягкая, дышащая ткань с добавлением лайкры, поэтому изделие не растягивается и держит форму после стирок. Свободный крой и спущенное плечо дают ту самую посадку, что на фото.",
+        composition: "Кулирка: 92% хлопок, 8% лайкра. Плотность 210 г/м². Свободный оверсайз-крой.",
+        care: "Стирка при 30°C в деликатном режиме, вывернув наизнанку. Не отбеливать. Гладить при низкой температуре."
       },
       {
         id: 2,
-        name: "ХУДИ «ПРАВИЛА»",
+        name: "ХУДИ «DEVIANT»",
         images: [
-          "https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=600&h=800&fit=crop",
-          "https://images.unsplash.com/photo-1578768079052-aa76e52ff62e?w=600&h=800&fit=crop",
-          "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=600&h=800&fit=crop"
+          "https://i.ibb.co/B2fxspqp/5294273407325249290-119.jpg",
+          "https://i.ibb.co/dw0wC96Q/5298540427269054788-119.jpg"
         ],
         price: "8 900 ₽",
         oldPrice: "10 900 ₽",
-        sizes: ["XS", "S", "M", "L", "XL"],
-        colors: ["#1a1c1c", "#474745"],
-        description: "Теплое худи с начесом. Свободный крой, спущенная линия плеча, усиленные швы. Капюшон на подкладке.",
-        composition: "80% хлопок, 20% полиэстер, футер 3-нитка",
-        care: "Стирка при 30°C в деликатном режиме. Не сушить в барабане."
+        sizes: ["46", "48", "50", "52"],
+        colors: ["black", "white"],
+        description: "Кропнутое худи из плотного футера — тёплое, тяжёлое, держит форму и не обвисает. На спине не просто принт, а объёмная аппликация с вышивкой: фирменный логотип DEVIANCE.",
+        composition: "Футер 3-нитка диагональ, плотность 480 г/м². Аппликация с вышивкой на спине.",
+        care: "Стирка при 30°C в деликатном режиме, вывернув наизнанку, чтобы беречь вышивку. Не отбеливать, не сушить в барабане."
       },
       {
         id: 3,
-        name: "БРЮКИ КАРГО «РИСК»",
+        name: "ДЖИНСЫ «RISKY»",
         images: [
-          "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=600&h=800&fit=crop",
-          "https://images.unsplash.com/photo-1517445312882-64f8f1200fe3?w=600&h=800&fit=crop",
-          "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=600&h=800&fit=crop"
+          "https://i.ibb.co/FkNJTtgt/5296288627455368979-119.jpg",
+          "https://i.ibb.co/tMt4yg2X/5296288627455368980-119.jpg",
+          "https://i.ibb.co/B2HLw61z/5296288627455369140-121.jpg"
         ],
-        price: "7 200 ₽",
-        oldPrice: "8 500 ₽",
-        sizes: ["S", "M", "L"],
-        colors: ["#1a1c1c", "#3d3d3d"],
-        description: "Функциональные брюки с накладными карманами. Прочная ткань, устойчивая к износу, регулировка по талии.",
-        composition: "100% нейлон с водоотталкивающей пропиткой",
-        care: "Бережная стирка при 30°C. Не гладить."
+        price: "7 500 ₽",
+        oldPrice: "8 900 ₽",
+        sizes: ["S", "M", "L", "XL"],
+        colors: ["black", "blue"],
+        description: "Классический деним с посадкой baggy: свободный крой через всю ногу и чуть заниженная линия талии. Прочная джинсовая ткань, которая со временем садится по фигуре и приобретает индивидуальную посадку.",
+        composition: "Деним из хлопка с добавлением эластана. Свободная посадка baggy.",
+        care: "Стирка при 30°C вывернув наизнанку. Не отбеливать. Сушить в расправленном виде, гладить при средней температуре."
       },
       {
         id: 4,
-        name: "ЛОНГСЛИВ «ХАРАКТЕР»",
+        name: "ЛОНГСЛИВ «CHAOS»",
         images: [
-          "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=600&h=800&fit=crop",
-          "https://images.unsplash.com/photo-1586363104862-3a5e2ab60d99?w=600&h=800&fit=crop",
-          "https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=600&h=800&fit=crop"
+          "https://i.ibb.co/w8KNQZS/5300919250740518391-119.jpg",
+          "https://i.ibb.co/fYKW4JKr/5305601443697993406-119.jpg"
         ],
-        price: "5 200 ₽",
-        oldPrice: "6 200 ₽",
-        sizes: ["S", "M", "L", "XL"],
-        colors: ["#1a1c1c", "#f9f4eb"],
-        description: "Лонгслив из мягкого хлопка с принтом на груди. Универсальная вещь для многослойных образов.",
-        composition: "100% хлопок, интерлок",
-        care: "Стирка при 30°C. Не отбеливать."
-      },
-      {
-        id: 5,
-        name: "ШОРТЫ «ПРИКЛЮЧЕНИЯ»",
-        images: [
-          "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=600&h=800&fit=crop",
-          "https://images.unsplash.com/photo-1565084888279-aca607ecce0c?w=600&h=800&fit=crop",
-          "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?w=600&h=800&fit=crop"
-        ],
-        price: "4 800 ₽",
-        oldPrice: "5 800 ₽",
-        sizes: ["S", "M", "L"],
-        colors: ["#1a1c1c", "#3d3d3d", "#8b7355"],
-        description: "Укороченные шорты свободного кроя. Идеальны для активного отдыха и города.",
-        composition: "65% хлопок, 35% полиэстер",
-        care: "Стирка при 30°C. Можно сушить в барабане."
-      },
-      {
-        id: 6,
-        name: "КЕПКА «DEVIANCE»",
-        images: [
-          "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=600&h=800&fit=crop",
-          "https://images.unsplash.com/photo-1534215754734-18e55d13e346?w=600&h=800&fit=crop",
-          "https://images.unsplash.com/photo-1521369909029-2afed882baee?w=600&h=800&fit=crop"
-        ],
-        price: "2 900 ₽",
-        oldPrice: "3 500 ₽",
-        sizes: ["ONE SIZE"],
-        colors: ["#1a1c1c", "#f9f4eb"],
-        description: "Классическая кепка с вышитым логотипом. Регулируемый размер.",
-        composition: "100% хлопок",
-        care: "Ручная стирка. Не отбеливать."
+        price: "4 900 ₽",
+        oldPrice: "5 900 ₽",
+        sizes: ["46", "48", "50", "52"],
+        colors: ["black", "white"],
+        description: "Лонгслив из футера 2-нитка — плотнее обычной кулирки, держит форму и приятен к телу. Универсальный базовый слой для многослойных образов DEVIANCE.",
+        composition: "Футер 2-нитка. Прямой крой.",
+        care: "Стирка при 30°C. Не отбеливать. Гладить при низкой температуре с изнаночной стороны."
       }
     ];
 
-    let cartCount = 0;
+    const COLOR_NAMES = { black: 'Чёрный', white: 'Белый', blue: 'Синий' };
+
+    let cart = []; // {key, productId, name, image, size, color, priceNum, priceLabel, qty}
     let currentDetailImageIndex = 0;
     let currentDetailProduct = null;
+    let currentDetailColor = null;
 
+    function parsePrice(str) { return parseInt(str.replace(/[^\d]/g, ''), 10); }
+    function formatPrice(n) { return n.toLocaleString('ru-RU') + ' ₽'; }
+
+    // Render Products
     function renderProducts() {
       const grid = document.getElementById('product-grid');
       grid.innerHTML = products.map(product => `
@@ -1720,41 +1314,21 @@
           <div class="product-price">${product.price}</div>
         </div>
       `).join('');
-      
-      document.querySelectorAll('.product-image-container').forEach(container => {
-        addSwipeListener(container);
-      });
+      document.getElementById('collection-count').innerText = '[ ' + products.length + ' ТОВАРОВ ]';
+      document.querySelectorAll('.product-image-container').forEach(container => addSwipeListener(container));
     }
 
     function addSwipeListener(element) {
-      let startX = 0;
-      let currentX = 0;
-      let isSwiping = false;
-      
-      element.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-        isSwiping = true;
-      }, { passive: true });
-      
-      element.addEventListener('touchmove', (e) => {
-        if (!isSwiping) return;
-        currentX = e.touches[0].clientX;
-      }, { passive: true });
-      
-      element.addEventListener('touchend', (e) => {
+      let startX = 0, currentX = 0, isSwiping = false;
+      element.addEventListener('touchstart', e => { startX = e.touches[0].clientX; isSwiping = true; }, { passive: true });
+      element.addEventListener('touchmove', e => { if (isSwiping) currentX = e.touches[0].clientX; }, { passive: true });
+      element.addEventListener('touchend', () => {
         if (!isSwiping) return;
         isSwiping = false;
-        
         const diff = startX - currentX;
-        const threshold = 50;
-        
-        if (Math.abs(diff) > threshold) {
+        if (Math.abs(diff) > 50) {
           const productId = parseInt(element.dataset.productId);
-          if (diff > 0) {
-            changeImage(productId, 1);
-          } else {
-            changeImage(productId, -1);
-          }
+          changeImage(productId, diff > 0 ? 1 : -1);
         }
       });
     }
@@ -1764,11 +1338,9 @@
       const img = card.querySelector('.product-image');
       const product = products.find(p => p.id === cardId);
       let currentIndex = parseInt(img.dataset.index);
-      
       currentIndex += direction;
       if (currentIndex < 0) currentIndex = product.images.length - 1;
       if (currentIndex >= product.images.length) currentIndex = 0;
-      
       img.dataset.index = currentIndex;
       img.src = product.images[currentIndex];
     }
@@ -1776,78 +1348,62 @@
     function openProduct(id) {
       currentDetailProduct = products.find(p => p.id === id);
       currentDetailImageIndex = 0;
-      
+      currentDetailColor = currentDetailProduct.colors[0];
+
       document.getElementById('detail-product-name').innerText = currentDetailProduct.name;
       document.getElementById('detail-price-current').innerText = currentDetailProduct.price;
       document.getElementById('detail-price-old').innerText = currentDetailProduct.oldPrice || '';
       document.getElementById('detail-main-img').src = currentDetailProduct.images[0];
       document.getElementById('detail-main-img').alt = currentDetailProduct.name;
-      
       document.getElementById('detail-composition').innerHTML = `<p>${currentDetailProduct.composition}</p><p style="margin-top: 12px;">${currentDetailProduct.description}</p>`;
       document.getElementById('detail-care').innerHTML = `<p>${currentDetailProduct.care}</p>`;
-      
+
       const sizeDropdown = document.getElementById('size-dropdown');
       sizeDropdown.innerHTML = currentDetailProduct.sizes.map(s => `<option value="${s}">${s}</option>`).join('');
-      
+
+      const colorSelector = document.getElementById('color-selector');
+      colorSelector.innerHTML = currentDetailProduct.colors.map((color, i) => `
+        <div class="color-option ${i === 0 ? 'active' : ''}" data-color="${color}" title="${COLOR_NAMES[color]}" onclick="selectColor(this)"></div>
+      `).join('');
+
       const thumbnailsContainer = document.getElementById('product-thumbnails');
       thumbnailsContainer.innerHTML = currentDetailProduct.images.map((img, i) => `
         <div class="product-thumbnail ${i === 0 ? 'active' : ''}" onclick="selectThumbnail(${i})">
           <img src="${img}" alt="${currentDetailProduct.name} ${i + 1}">
         </div>
       `).join('');
-      
+
       document.getElementById('product-detail-modal').classList.add('active');
       document.body.style.overflow = 'hidden';
       window.scrollTo(0, 0);
-      
+
       const detailImg = document.getElementById('detail-main-img');
-      if (detailImg) {
-        addSwipeToDetail(detailImg);
-      }
+      if (detailImg) addSwipeToDetail(detailImg);
+    }
+
+    function selectColor(element) {
+      document.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('active'));
+      element.classList.add('active');
+      currentDetailColor = element.dataset.color;
     }
 
     function selectThumbnail(index) {
       currentDetailImageIndex = index;
       document.getElementById('detail-main-img').src = currentDetailProduct.images[index];
-      
       document.querySelectorAll('.product-thumbnail').forEach((thumb, i) => {
-        if (i === index) {
-          thumb.classList.add('active');
-        } else {
-          thumb.classList.remove('active');
-        }
+        thumb.classList.toggle('active', i === index);
       });
     }
 
     function addSwipeToDetail(element) {
-      let startX = 0;
-      let currentX = 0;
-      let isSwiping = false;
-      
-      element.addEventListener('touchstart', (e) => {
-        startX = e.touches[0].clientX;
-        isSwiping = true;
-      }, { passive: true });
-      
-      element.addEventListener('touchmove', (e) => {
-        if (!isSwiping) return;
-        currentX = e.touches[0].clientX;
-      }, { passive: true });
-      
-      element.addEventListener('touchend', (e) => {
+      let startX = 0, currentX = 0, isSwiping = false;
+      element.addEventListener('touchstart', e => { startX = e.touches[0].clientX; isSwiping = true; }, { passive: true });
+      element.addEventListener('touchmove', e => { if (isSwiping) currentX = e.touches[0].clientX; }, { passive: true });
+      element.addEventListener('touchend', () => {
         if (!isSwiping) return;
         isSwiping = false;
-        
         const diff = startX - currentX;
-        const threshold = 50;
-        
-        if (Math.abs(diff) > threshold) {
-          if (diff > 0) {
-            changeDetailImage(1);
-          } else {
-            changeDetailImage(-1);
-          }
-        }
+        if (Math.abs(diff) > 50) changeDetailImage(diff > 0 ? 1 : -1);
       });
     }
 
@@ -1861,12 +1417,8 @@
     function toggleAccordion(header) {
       const item = header.parentElement;
       const isOpen = item.classList.contains('open');
-      
       document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('open'));
-      
-      if (!isOpen) {
-        item.classList.add('open');
-      }
+      if (!isOpen) item.classList.add('open');
     }
 
     function closeProductDetail() {
@@ -1874,27 +1426,188 @@
       document.body.style.overflow = '';
     }
 
+    // ============ CART ============
     function updateCart() {
-      cartCount++;
-      const cartBtn = document.querySelector('.icon-btn');
-      let badge = cartBtn.querySelector('.cart-badge');
-      if (!badge) {
-        badge = document.createElement('span');
-        badge.className = 'cart-badge';
-        badge.style.cssText = 'position:absolute;top:-4px;right:-4px;background:#f0f0f0;color:#000;font-size:10px;font-family:JetBrains Mono,monospace;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;';
-        cartBtn.style.position = 'relative';
-        cartBtn.appendChild(badge);
+      const size = document.getElementById('size-dropdown').value;
+      const color = currentDetailColor;
+      const key = `${currentDetailProduct.id}-${size}-${color}`;
+      const existing = cart.find(i => i.key === key);
+
+      if (existing) {
+        existing.qty++;
+      } else {
+        cart.push({
+          key,
+          productId: currentDetailProduct.id,
+          name: currentDetailProduct.name,
+          image: currentDetailProduct.images[0],
+          size,
+          color,
+          priceNum: parsePrice(currentDetailProduct.price),
+          priceLabel: currentDetailProduct.price,
+          qty: 1
+        });
       }
-      badge.innerText = cartCount;
-      
+
+      updateCartBadge();
+      renderCart();
+
       const btn = document.querySelector('.add-to-cart-btn');
       const originalText = btn.innerText;
       btn.innerText = "Добавлено ✓";
-      setTimeout(() => {
-        btn.innerText = originalText;
-      }, 1000);
+      setTimeout(() => { btn.innerText = originalText; }, 1000);
     }
 
+    function updateCartBadge() {
+      const totalQty = cart.reduce((s, i) => s + i.qty, 0);
+      const cartBtn = document.getElementById('cart-open-btn');
+      let badge = cartBtn.querySelector('.cart-badge');
+      if (totalQty === 0) { if (badge) badge.remove(); return; }
+      if (!badge) {
+        badge = document.createElement('span');
+        badge.className = 'cart-badge';
+        badge.style.cssText = 'position:absolute;top:-4px;right:-4px;background:#f0f0f0;color:#000;font-size:10px;font-family:JetBrains Mono,monospace;min-width:16px;height:16px;padding:0 3px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:600;';
+        cartBtn.style.position = 'relative';
+        cartBtn.appendChild(badge);
+      }
+      badge.innerText = totalQty;
+    }
+
+    function cartTotal() { return cart.reduce((s, i) => s + i.priceNum * i.qty, 0); }
+
+    function renderCart() {
+      const wrap = document.getElementById('cart-items');
+      const empty = document.getElementById('cart-empty-state');
+      const form = document.getElementById('checkout-form');
+
+      if (cart.length === 0) {
+        wrap.innerHTML = '';
+        empty.style.display = 'block';
+        form.style.display = 'none';
+        return;
+      }
+      empty.style.display = 'none';
+      form.style.display = 'grid';
+
+      wrap.innerHTML = cart.map((item, idx) => `
+        <div class="cart-item">
+          <img class="cart-item-img" src="${item.image}" alt="${item.name}">
+          <div class="cart-item-info">
+            <h4>${item.name}</h4>
+            <div class="cart-item-meta">
+              Размер: ${item.size}<span class="dot">·</span>${COLOR_NAMES[item.color]}
+            </div>
+          </div>
+          <div class="cart-item-right">
+            <span class="cart-item-price">${formatPrice(item.priceNum * item.qty)}</span>
+            <div class="qty-controls">
+              <button class="qty-btn" onclick="changeQty(${idx}, -1)">−</button>
+              <span class="qty-num">${item.qty}</span>
+              <button class="qty-btn" onclick="changeQty(${idx}, 1)">+</button>
+            </div>
+            <button class="cart-item-remove" onclick="removeItem(${idx})">Удалить</button>
+          </div>
+        </div>
+      `).join('');
+
+      document.getElementById('cart-total').innerText = formatPrice(cartTotal());
+    }
+
+    function changeQty(idx, delta) {
+      cart[idx].qty += delta;
+      if (cart[idx].qty <= 0) cart.splice(idx, 1);
+      updateCartBadge();
+      renderCart();
+    }
+
+    function removeItem(idx) {
+      cart.splice(idx, 1);
+      updateCartBadge();
+      renderCart();
+    }
+
+    function openCart() {
+      document.getElementById('product-detail-modal').classList.remove('active');
+      document.querySelectorAll('.modal-page').forEach(p => p.classList.remove('active'));
+      renderCart();
+      document.getElementById('cart-page').classList.add('active');
+      document.body.style.overflow = 'hidden';
+      window.scrollTo(0, 0);
+    }
+
+    function closeCart() {
+      document.getElementById('cart-page').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // ============ PHONE MASK ============
+    const phoneInput = document.getElementById('f-phone');
+    phoneInput.addEventListener('input', function () {
+      let digits = this.value.replace(/\D/g, '');
+      if (digits.startsWith('8')) digits = '7' + digits.slice(1);
+      if (!digits.startsWith('7')) digits = '7' + digits;
+      digits = digits.slice(0, 11);
+
+      // Разрешаем только мобильные коды 9XX
+      if (digits.length > 1 && digits[1] !== '9') {
+        digits = digits[0] + digits.slice(2); // убираем неверный код оператора
+      }
+
+      let out = '+7';
+      if (digits.length > 1) out += ' (' + digits.slice(1, 4);
+      if (digits.length >= 4) out += ') ' + digits.slice(4, 7);
+      if (digits.length >= 7) out += '-' + digits.slice(7, 9);
+      if (digits.length >= 9) out += '-' + digits.slice(9, 11);
+      this.value = out;
+    });
+    phoneInput.addEventListener('keydown', function (e) {
+      // Блокируем буквы и спецсимволы (кроме управляющих клавиш)
+      if (e.key.length === 1 && !/[0-9+]/.test(e.key)) e.preventDefault();
+    });
+
+    function isValidPhone(v) {
+      const d = v.replace(/\D/g, '');
+      return d.length === 11 && d.startsWith('7') && d[1] === '9';
+    }
+
+    // ============ CHECKOUT VALIDATION ============
+    function submitOrder(e) {
+      e.preventDefault();
+      const err = document.getElementById('form-error');
+      const email = document.getElementById('f-email');
+      const name = document.getElementById('f-name');
+      const city = document.getElementById('f-city');
+      const pvz = document.getElementById('f-pvz');
+
+      [email, name, city, pvz, phoneInput].forEach(f => f.classList.remove('invalid'));
+      err.classList.remove('show');
+
+      let problems = [];
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim())) { problems.push('Укажи корректный email'); email.classList.add('invalid'); }
+      if (!isValidPhone(phoneInput.value)) { problems.push('Телефон: только существующий мобильный номер РФ в формате +7 (9XX) XXX-XX-XX'); phoneInput.classList.add('invalid'); }
+      if (name.value.trim().split(/\s+/).length < 2) { problems.push('ФИО: введи фамилию и имя'); name.classList.add('invalid'); }
+      if (city.value.trim().length < 2) { problems.push('Укажи город доставки'); city.classList.add('invalid'); }
+      if (pvz.value.trim().length < 1) { problems.push('Выбери пункт получения СДЭК'); pvz.classList.add('invalid'); }
+
+      if (problems.length) {
+        err.innerText = '— ' + problems.join(' · ');
+        err.classList.add('show');
+        return false;
+      }
+
+      // TODO: интеграция с ЮKassa — сюда передаётся cart + данные формы
+      const btn = document.getElementById('pay-btn');
+      btn.disabled = true;
+      btn.innerText = 'Переход к оплате…';
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.innerText = 'Оплатить';
+        alert('Заказ сформирован. Интеграция с ЮKassa будет подключена здесь.\n\nТоваров: ' + cart.reduce((s,i)=>s+i.qty,0) + ' · Итого: ' + formatPrice(cartTotal()));
+      }, 800);
+      return false;
+    }
+
+    // ============ NAV HELPERS ============
     function closeModal(id) {
       document.getElementById(id).classList.remove('active');
       document.body.style.overflow = '';
@@ -1909,6 +1622,7 @@
 
     function scrollToSection(id) {
       closeProductDetail();
+      closeCart();
       document.querySelectorAll('.modal-page').forEach(p => p.classList.remove('active'));
       document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
     }
@@ -1918,11 +1632,7 @@
       const btn = document.getElementById('hamburger-btn');
       menu.classList.toggle('active');
       btn.classList.toggle('active');
-      if (menu.classList.contains('active')) {
-        document.body.style.overflow = 'hidden';
-      } else {
-        document.body.style.overflow = '';
-      }
+      document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
     }
 
     function closeMenuAndScroll(id) {
@@ -1931,9 +1641,7 @@
       menu.classList.remove('active');
       btn.classList.remove('active');
       document.body.style.overflow = '';
-      setTimeout(() => {
-        document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-      }, 100);
+      setTimeout(() => { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }, 100);
     }
 
     renderProducts();
